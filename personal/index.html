@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Hidden Paths - Vibe Explorer</title>
+    <style>
+        /* BASE STYLES & MOBILE RESET */
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+        body { background-color: #f3f4f6; display: flex; justify-content: center; align-items: center; min-height: 100vh; color: #1f2937; }
+        /* MOBILE APP CONTAINER */
+        .app-container { background-color: #ffffff; width: 100%; max-width: 412px; height: 100vh; max-height: 844px; display: flex; flex-direction: column; box-shadow: 0 10px 25px rgba(0,0,0,0.1); position: relative; overflow: hidden; border-radius: 12px; }
+        /* HEADER */
+        .app-header { padding: 16px; display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid #e5e7eb; background:#fff; }
+        .app-header h1 { font-size:1.25rem; font-weight:700; letter-spacing:-0.025em; }
+        .menu-btn { background:none; border:none; font-size:1.5rem; cursor:pointer; }
+        /* MAIN CONTENT SCROLL AREA */
+        .app-content { flex:1; overflow-y:auto; padding:20px; padding-bottom: 110px; }
+        h2 { font-size:1.5rem; margin-bottom:20px; font-weight:700; }
+        .input-group { margin-bottom:24px; }
+        .input-group label { display:block; font-size:0.875rem; font-weight:600; margin-bottom:8px; color:#4b5563; }
+        .input-group input { width:100%; padding:12px 16px; border:1px solid #d1d5db; border-radius:8px; font-size:1rem; outline:none; transition:border-color .2s; }
+        .input-group input:focus { border-color:#1f2937; }
+        /* VIBE GRID BUTTONS */
+        fieldset.vibe-grid { border:none; margin-bottom:24px; }
+        fieldset.vibe-grid legend { font-size:0.875rem; font-weight:600; margin-bottom:12px; color:#4b5563; }
+        .grid-layout { display:grid; grid-template-columns:repeat(2,1fr); gap:12px; }
+        .vibe-card { border:1px solid #e5e7eb; border-radius:12px; padding:16px; display:flex; flex-direction:column; align-items:center; justify-content:center; cursor:pointer; transition:all .15s; background:#fff; text-align:center; }
+        .vibe-card input { display:none; }
+        .vibe-icon { font-size:1.5rem; margin-bottom:6px; }
+        .vibe-label { font-size:0.875rem; font-weight:500; }
+        .vibe-card:has(input:checked) { border-color:#1f2937; background-color:#f9fafb; box-shadow:0 0 0 1px #1f2937; }
+        /* BUTTONS */
+        .submit-btn { width:100%; background-color:#1f2937; color:#fff; border:none; padding:14px; border-radius:24px; font-size:1rem; font-weight:600; cursor:pointer; transition:background-color .2s; }
+        .submit-btn:hover { background-color:#374151; }
+        /* DYNAMIC RESULTS VIEW */
+        .hidden { display:none !important; }
+        .spot-card { background:#fff; border:1px solid #e5e7eb; border-radius:16px; padding:16px; margin-top:10px; }
+        .spot-card h3 { font-size:1.25rem; margin-bottom:12px; }
+        .spot-media-placeholder { background-color:#f3f4f6; border-radius:8px; margin-bottom:16px; display:flex; align-items:center; justify-content:center; color:#9ca3af; font-size:0.875rem; border:1px dashed #d1d5db; height:150px; }
+        .spot-card p { font-size:0.95rem; line-height:1.5; color:#4b5563; margin-bottom:16px; }
+        .action-buttons { display:flex; flex-direction:column; gap:10px; }
+        .btn { width:100%; padding:12px; border-radius:24px; font-size:0.95rem; font-weight:600; text-align:center; text-decoration:none; cursor:pointer; border:none; }
+        .secondary-btn { background-color:#f3f4f6; color:#1f2937; border:1px solid #d1d5db; }
+        .text-btn { background:none; color:#4b5563; font-weight:500; }
+        /* BOTTOM FIXED NAVIGATION */
+        .bottom-nav { position:absolute; bottom:0; left:0; right:0; height:64px; border-top:1px solid #e5e7eb; background:#fff; display:flex; justify-content:space-around; align-items:center; padding-bottom: env(safe-area-inset-bottom); }
+        .nav-item { background:none; border:none; display:flex; flex-direction:column; align-items:center; color:#9ca3af; font-size:0.75rem; cursor:pointer; }
+        .nav-item.active { color:#1f2937; font-weight:600; }
+        .nav-item span { margin-top:2px; }
+        /* small utility */
+        .sr-only { position:absolute; left:-10000px; width:1px; height:1px; overflow:hidden; }
+        .toast { position:fixed; left:50%; transform:translateX(-50%); bottom:84px; background: #111827; color:#fff; padding:8px 12px; border-radius:999px; font-size:0.9rem; box-shadow:0 6px 20px rgba(0,0,0,0.12); display:none; }
+        @media (min-width:420px) { .app-container { border-radius:18px; } .grid-layout { grid-template-columns:repeat(3,1fr); } }
+    </style>
+</head>
+<body>
+    <div class="app-container" role="application" aria-labelledby="app-title">
+        <header class="app-header">
+            <h1 id="app-title">Hidden Paths</h1>
+            <button class="menu-btn" aria-label="Open Menu" id="menuBtn">≡</button>
+        </header>
+
+        <main class="app-content" id="mainContent">
+            <!-- SEARCH AND CHOOSE VIEW -->
+            <section id="search-section" aria-labelledby="search-heading">
+                <h2 id="search-heading">Find Your Vibe</h2>
+
+                <form id="vibe-form">
+                    <div class="input-group">
+                        <label for="neighborhood-input">Enter your neighborhood</label>
+                        <input type="text" id="neighborhood-input" placeholder="e.g., Downtown, Arts District" required aria-required="true" />
+                    </div>
+
+                    <fieldset class="vibe-grid">
+                        <legend>What are you looking for today?</legend>
+                        <div class="grid-layout" role="radiogroup" aria-label="Vibe choices">
+                            <label class="vibe-card" tabindex="0" data-for="v-quiet">
+                                <input type="radio" id="v-quiet" name="vibe" value="quiet" required />
+                                <span class="vibe-icon" aria-hidden="true">🌳</span>
+                                <span class="vibe-label">Quiet Refuge</span>
+                            </label>
+
+                            <label class="vibe-card" tabindex="0" data-for="v-coffee">
+                                <input type="radio" id="v-coffee" name="vibe" value="coffee" />
+                                <span class="vibe-icon" aria-hidden="true">☕</span>
+                                <span class="vibe-label">Coffee & Code</span>
+                            </label>
+
+                            <label class="vibe-card" tabindex="0" data-for="v-history">
+                                <input type="radio" id="v-history" name="vibe" value="history" />
+                                <span class="vibe-icon" aria-hidden="true">👁️</span>
+                                <span class="vibe-label">Weird History</span>
+                            </label>
+
+                            <label class="vibe-card" tabindex="0" data-for="v-photos">
+                                <input type="radio" id="v-photos" name="vibe" value="photos" />
+                                <span class="vibe-icon" aria-hidden="true">📷</span>
+                                <span class="vibe-label">Street Art</span>
+                            </label>
+
+                            <label class="vibe-card" tabindex="0" data-for="v-people">
+                                <input type="radio" id="v-people" name="vibe" value="people" />
+                                <span class="vibe-icon" aria-hidden="true">🪑</span>
+                                <span class="vibe-label">People Watching</span>
+                            </label>
+
+                            <label class="vibe-card" tabindex="0" data-for="v-urban">
+                                <input type="radio" id="v-urban" name="vibe" value="urban" />
+                                <span class="vibe-icon" aria-hidden="true">🗺️</span>
+                                <span class="vibe-label">Urban Art</span>
+                            </label>
+                        </div>
+                    </fieldset>
+
+                    <button type="submit" class="submit-btn" id="discoverBtn">Discover Spot</button>
+                </form>
+            </section>
+
+            <!-- CARD MATCH RESULT VIEW -->
+            <section id="result-section" class="hidden" aria-labelledby="result-heading">
+                <h2 id="result-heading">Spot Found</h2>
+
+                <article class="spot-card" id="spotCard" aria-live="polite">
+                    <h3 id="spotTitle">—</h3>
+                    <div class="spot-media-placeholder" id="spotMedia">Image / Media</div>
+                    <p id="spotDescription">Description</p>
+
+                    <div class="action-buttons">
+                        <a id="openMapBtn" class="btn" target="_blank" rel="noopener">Open on Map</a>
+                        <button id="saveBtn" class="btn secondary-btn">Save Spot</button>
+                        <button id="backBtn" class="btn text-btn">Back to search</button>
+                    </div>
+                </article>
+            </section>
+
+            <div id="status" class="sr-only" aria-live="polite"></div>
+            <div id="toast" class="toast" role="status" aria-live="polite"></div>
+        </main>
+
+        <!-- BOTTOM NAV -->
+        <nav class="bottom-nav" role="navigation" aria-label="Main navigation">
+            <button class="nav-item active" data-nav="explore" aria-pressed="true"><span>🔍</span><span>Explore</span></button>
+            <button class="nav-item" data-nav="saved"><span>💾</span><span>Saved</span></button>
+            <button class="nav-item" data-nav="map"><span>🗺️</span><span>Map</span></button>
+            <button class="nav-item" data-nav="profile"><span>👤</span><span>Profile</span></button>
+        </nav>
+    </div>
+
+    <script>
+        (function () {
+            // Sample spot dataset
+            const SPOTS = {
+                quiet: [
+                    { title: "Willow Pocket Garden", description: "A tucked-away garden with shaded benches, quiet fountains, and wifi-friendly nooks.", coords: "37.7749,-122.4194", media: null },
+                    { title: "Elm Lane Courtyard", description: "Hidden courtyard behind a bookstore — great for reading and reflection.", coords: "37.7750,-122.4183", media: null }
+                ],
+                coffee: [
+                    { title: "Circuit Coffee Lab", description: "Small roast lab with steady plugs and cozy tables for long coding sessions.", coords: "37.7767,-122.4170", media: null },
+                    { title: "Grounds & Gears", description: "Indie shop with excellent espresso and quiet corners.", coords: "37.7755,-122.4161", media: null }
+                ],
+                history: [
+                    { title: "Old Beacon Alley", description: "An alley lined with plaques & odd artifacts telling local secrets.", coords: "37.7740,-122.4152", media: null },
+                    { title: "Foundry Steps", description: "Remnants of a 19th-century foundry with evocative murals.", coords: "37.7738,-122.4140", media: null }
+                ],
+                photos: [
+                    { title: "Graffito Row", description: "A vibrant block of rotating murals — perfect for photography.", coords: "37.7721,-122.4123", media: null },
+                    { title: "Colorway Underpass", description: "Tunnel with layered street art and dynamic textures.", coords: "37.7710,-122.4100", media: null }
+                ],
+                people: [
+                    { title: "Corner Cafe Terrace", description: "Wide terrace facing the plaza — excellent for people watching.", coords: "37.7700,-122.4080", media: null },
+                    { title: "Market Bench Circle", description: "A semicircle of benches next to a curated market.", coords: "37.7690,-122.4060", media: null }
+                ],
+                urban: [
+                    { title: "Steel & Neon Walk", description: "A stretch of contemporary urban installations and sculptures.", coords: "37.7680,-122.4040", media: null },
+                    { title: "Mosaic Overpass", description: "Large mosaic panels under a pedestrian overpass.", coords: "37.7670,-122.4020", media: null }
+                ]
+            };
+
+            // Elements
+            const form = document.getElementById('vibe-form');
+            const neighborhoodInput = document.getElementById('neighborhood-input');
+            const resultSection = document.getElementById('result-section');
+            const searchSection = document.getElementById('search-section');
+            const spotTitle = document.getElementById('spotTitle');
+            const spotDescription = document.getElementById('spotDescription');
+            const spotMedia = document.getElementById('spotMedia');
+            const openMapBtn = document.getElementById('openMapBtn');
+            const saveBtn = document.getElementById('saveBtn');
+            const backBtn = document.getElementById('backBtn');
+            const toast = document.getElementById('toast');
+            const status = document.getElementById('status');
+            const navItems = document.querySelectorAll('.nav-item');
+            const discoverBtn = document.getElementById('discoverBtn');
+
+            // Utility: random pick
+            function pickRandom(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
+
+            // Toast helper
+            function showToast(text, ms = 2000) {
+                toast.textContent = text;
+                toast.style.display = 'block';
+                setTimeout(() => { toast.style.display = 'none'; }, ms);
+            }
+
+            // Save to localStorage (simple)
+            function saveSpot(spot) {
+                try {
+                    const key = 'hiddenpaths_saved';
+                    const existing = JSON.parse(localStorage.getItem(key) || '[]');
+                    existing.push(spot);
+                    localStorage.setItem(key, JSON.stringify(existing));
+                    showToast('Saved to your list');
+                } catch (e) {
+                    showToast('Unable to save');
+                }
+            }
+
+            // Build Google Maps link
+            function mapsLink(coords, title) {
+                if (!coords) return '#';
+                return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(coords)}&query_place_id=${encodeURIComponent(title)}`;
+            }
+
+            // Handle form submit
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+                const neighborhood = neighborhoodInput.value.trim();
+                const vibe = form.elements['vibe'].value;
+                if (!vibe || !neighborhood) {
+                    status.textContent = 'Please pick a vibe and enter your neighborhood.';
+                    return;
+                }
+
+                status.textContent = `Searching ${neighborhood} for ${vibe} spots...`;
+
+                // Simulate search / pick a spot
+                const pool = SPOTS[vibe] || [];
+                const chosen = pickRandom(pool) || { title: 'No spot', description: 'No matches found.', coords: '', media: null };
+
+                // Populate UI
+                spotTitle.textContent = chosen.title;
+                spotDescription.textContent = `${chosen.description} — Near ${neighborhood}.`;
+                spotMedia.textContent = chosen.media ? '' : 'Media placeholder';
+                openMapBtn.href = mapsLink(chosen.coords, chosen.title);
+                openMapBtn.setAttribute('aria-label', `Open ${chosen.title} in maps`);
+                saveBtn.onclick = () => saveSpot({ ...chosen, neighborhood, vibe, savedAt: new Date().toISOString() });
+
+                // Show result view, hide search
+                searchSection.classList.add('hidden');
+                resultSection.classList.remove('hidden');
+
+                // Focus management
+                openMapBtn.focus();
+
+                status.textContent = `Found: ${chosen.title}`;
+            });
+
+            // Back to search
+            backBtn.addEventListener('click', function () {
+                resultSection.classList.add('hidden');
+                searchSection.classList.remove('hidden');
+                discoverBtn.focus();
+                status.textContent = 'Ready to discover.';
+            });
+
+            // Simple keyboard support for label -> toggle radio on Enter/Space
+            document.querySelectorAll('.vibe-card').forEach(card => {
+                card.addEventListener('keydown', (ev) => {
+                    if (ev.key === 'Enter' || ev.key === ' ') {
+                        ev.preventDefault();
+                        const forId = card.getAttribute('data-for');
+                        if (forId) {
+                            const input = document.getElementById(forId);
+                            if (input) input.checked = true;
+                            card.querySelector('input').dispatchEvent(new Event('change', { bubbles: true }));
+                        }
+                    }
+                    if (ev.key === 'ArrowRight' || ev.key === 'ArrowDown') {
+                        ev.preventDefault();
+                        const next = card.nextElementSibling || card.parentElement.firstElementChild;
+                        if (next) next.focus();
+                    }
+                    if (ev.key === 'ArrowLeft' || ev.key === 'ArrowUp') {
+                        ev.preventDefault();
+                        const prev = card.previousElementSibling || card.parentElement.lastElementChild;
+                        if (prev) prev.focus();
+                    }
+                });
+            });
+
+            // Bottom nav interactions
+            navItems.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    navItems.forEach(n => { n.classList.remove('active'); n.setAttribute('aria-pressed', 'false'); });
+                    btn.classList.add('active'); btn.setAttribute('aria-pressed', 'true');
+                    const tab = btn.getAttribute('data-nav');
+                    // Minimal behavior: for saved, show toast; map opens new tab to Maps center; profile shows toast
+                    if (tab === 'saved') {
+                        showToast('Saved list is in-app (localStorage).');
+                    } else if (tab === 'map') {
+                        window.open('https://www.google.com/maps', '_blank', 'noopener');
+                    } else if (tab === 'profile') {
+                        showToast('Profile coming soon.');
+                    } else {
+                        // explore: return to search
+                        resultSection.classList.add('hidden');
+                        searchSection.classList.remove('hidden');
+                    }
+                });
+            });
+
+            // Accessibility: allow ESC to go back to search if in results
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && !resultSection.classList.contains('hidden')) {
+                    backBtn.click();
+                }
+            });
+
+            // Announce ready
+            status.textContent = 'Ready to discover.';
+        })();
+    </script>
+</body>
+</html>

@@ -13,23 +13,63 @@
         /* HEADER */
         .app-header { padding: 16px; display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid #e5e7eb; background:#fff; }
         .app-header h1 { font-size:1.25rem; font-weight:700; letter-spacing:-0.025em; }
-        .menu-btn { background:none; border:none; font-size:1.5rem; cursor:pointer; }
+        .app-header h1 a { color:inherit; text-decoration:none; }
+        .app-header h1 a:focus-visible { outline:2px solid #1f2937; outline-offset:4px; border-radius:2px; }
         /* MAIN CONTENT SCROLL AREA */
         .app-content { flex:1; overflow-y:auto; padding:20px; padding-bottom: 110px; }
         h2 { font-size:1.5rem; margin-bottom:20px; font-weight:700; }
+        .search-quote { margin:-14px 0 20px; color:#6b7280; font-size:0.9rem; font-style:italic; }
         .input-group { margin-bottom:24px; }
         .input-group label { display:block; font-size:0.875rem; font-weight:600; margin-bottom:8px; color:#4b5563; }
         .input-group input { width:100%; padding:12px 16px; border:1px solid #d1d5db; border-radius:8px; font-size:1rem; outline:none; transition:border-color .2s; }
         .input-group input:focus { border-color:#1f2937; }
+        .share-place-section { margin-top:28px; padding-top:20px; border-top:1px solid #e5e7eb; }
+        .share-place-section h3 { margin-bottom:8px; font-size:1.1rem; }
+        .share-place-note { margin-bottom:16px; color:#6b7280; font-size:0.8rem; line-height:1.4; }
+        .share-place-form { display:grid; gap:12px; }
+        .share-place-form label { display:block; margin-bottom:6px; color:#4b5563; font-size:0.875rem; font-weight:600; }
+        .share-place-form input, .share-place-form select, .share-place-form textarea { width:100%; padding:10px 12px; border:1px solid #d1d5db; border-radius:8px; background:#fff; color:#1f2937; font:inherit; font-size:0.95rem; }
+        .share-place-form textarea { min-height:76px; resize:vertical; }
+        .share-place-list { display:grid; gap:8px; margin-top:16px; list-style:none; }
+        .share-place-list li { padding:10px 12px; border-bottom:1px solid #e5e7eb; font-size:0.85rem; }
+        .share-place-list strong, .share-place-list span { display:block; }
+        .share-place-list span { margin-top:3px; color:#6b7280; }
         /* VIBE GRID BUTTONS */
         fieldset.vibe-grid { border:none; margin-bottom:24px; }
         fieldset.vibe-grid legend { font-size:0.875rem; font-weight:600; margin-bottom:12px; color:#4b5563; }
         .grid-layout { display:grid; grid-template-columns:repeat(2,1fr); gap:12px; }
         .vibe-card { border:1px solid #e5e7eb; border-radius:12px; padding:16px; display:flex; flex-direction:column; align-items:center; justify-content:center; cursor:pointer; transition:all .15s; background:#fff; text-align:center; }
         .vibe-card input { display:none; }
-        .vibe-icon { font-size:1.5rem; margin-bottom:6px; }
+        .vibe-icon { font-size:1.5rem; margin-bottom:6px; display:inline-flex; align-items:center; justify-content:center; width:1.5rem; height:1.5rem; }
+        .vibe-icon svg, .waterfall-logo { width:1.5rem; height:1.5rem; display:block; }
         .vibe-label { font-size:0.875rem; font-weight:500; }
         .vibe-card:has(input:checked) { border-color:#1f2937; background-color:#f9fafb; box-shadow:0 0 0 1px #1f2937; }
+        .spot-picker { display:grid; gap:12px; margin:0 0 20px; }
+        .spot-picker h3 { font-size:1.1rem; }
+        .spot-choice-grid { display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:12px; }
+        .spot-result-card { min-width:0; overflow:hidden; border:1px solid #e5e7eb; border-radius:8px; background:#fff; }
+        .spot-result-select { display:block; width:100%; padding:0; border:0; background:none; color:#1f2937; text-align:left; cursor:pointer; }
+        .spot-result-select:hover .spot-result-copy, .spot-result-select:focus-visible .spot-result-copy { background:#f9fafb; }
+        .spot-result-media, .spot-result-placeholder { display:flex; width:100%; aspect-ratio:4 / 3; align-items:center; justify-content:center; overflow:hidden; background:#f3f4f6; color:#6b7280; font-size:0.85rem; }
+        .spot-result-media img { display:block; width:100%; height:100%; object-fit:cover; }
+        .spot-result-copy { display:block; padding:10px; }
+        .spot-city-badge { display:inline-block; font-size:0.7rem; font-weight:600; color:#0284c7; background:#e0f2fe; padding:2px 6px; border-radius:4px; margin-bottom:4px; }
+        .spot-result-copy strong, .spot-result-copy span { display:block; }
+        .spot-result-copy strong { font-size:0.9rem; line-height:1.3; }
+        .spot-result-copy span { margin-top:4px; color:#6b7280; font-size:0.78rem; line-height:1.35; }
+        .spot-result-credit { display:block; padding:0 10px 9px; color:#6b7280; font-size:0.68rem; line-height:1.3; }
+        .quiet-location-manager { margin-top:24px; padding-top:20px; border-top:1px solid #e5e7eb; }
+        .quiet-location-form { display:grid; gap:12px; }
+        .quiet-location-form label { display:block; font-size:0.875rem; font-weight:600; margin-bottom:6px; color:#4b5563; }
+        .quiet-location-form input, .quiet-location-form textarea { width:100%; padding:10px 12px; border:1px solid #d1d5db; border-radius:8px; font:inherit; font-size:0.95rem; }
+        .quiet-location-form textarea { min-height:76px; resize:vertical; }
+        .quiet-location-form input:focus, .quiet-location-form textarea:focus { outline:2px solid #1f2937; outline-offset:1px; }
+        .quiet-location-list { list-style:none; display:grid; gap:8px; margin-top:16px; }
+        .quiet-location-item { display:flex; justify-content:space-between; align-items:flex-start; gap:12px; padding:12px; border:1px solid #e5e7eb; border-radius:8px; }
+        .quiet-location-item strong, .quiet-location-item span { display:block; }
+        .quiet-location-item span { margin-top:3px; font-size:0.85rem; color:#6b7280; }
+        .quiet-location-remove { border:0; background:none; color:#6b7280; font-size:1.25rem; cursor:pointer; }
+        .quiet-location-empty { margin-top:14px; color:#6b7280; font-size:0.9rem; }
         /* BUTTONS */
         .submit-btn { width:100%; background-color:#1f2937; color:#fff; border:none; padding:14px; border-radius:24px; font-size:1rem; font-weight:600; cursor:pointer; transition:background-color .2s; }
         .submit-btn:hover { background-color:#374151; }
@@ -37,7 +77,10 @@
         .hidden { display:none !important; }
         .spot-card { background:#fff; border:1px solid #e5e7eb; border-radius:16px; padding:16px; margin-top:10px; }
         .spot-card h3 { font-size:1.25rem; margin-bottom:12px; }
-        .spot-media-placeholder { background-color:#f3f4f6; border-radius:8px; margin-bottom:16px; display:flex; align-items:center; justify-content:center; color:#9ca3af; font-size:0.875rem; border:1px dashed #d1d5db; height:150px; }
+        .spot-media-placeholder { position:relative; background-color:#f3f4f6; border-radius:8px; margin-bottom:16px; display:flex; align-items:center; justify-content:center; color:#9ca3af; font-size:0.875rem; border:1px dashed #d1d5db; height:150px; overflow:hidden; }
+        .spot-media-placeholder img { width:100%; height:100%; object-fit:cover; }
+        .spot-media-credit { position:absolute; left:8px; right:8px; bottom:8px; padding:5px 7px; border-radius:4px; background:rgba(17,24,39,0.78); color:#fff; font-size:0.7rem; line-height:1.3; }
+        .spot-media-credit a { color:#fff; }
         .spot-card p { font-size:0.95rem; line-height:1.5; color:#4b5563; margin-bottom:16px; }
         .action-buttons { display:flex; flex-direction:column; gap:10px; }
         .btn { width:100%; padding:12px; border-radius:24px; font-size:0.95rem; font-weight:600; text-align:center; text-decoration:none; cursor:pointer; border:none; }
@@ -57,19 +100,19 @@
 <body>
     <div class="app-container" role="application" aria-labelledby="app-title">
         <header class="app-header">
-            <h1 id="app-title">Hidden Paths</h1>
-            <button class="menu-btn" aria-label="Open Menu" id="menuBtn">≡</button>
+            <h1 id="app-title"><a href="#search-section" id="homeLink">Romeo</a></h1>
         </header>
 
         <main class="app-content" id="mainContent">
             <!-- SEARCH AND CHOOSE VIEW -->
             <section id="search-section" aria-labelledby="search-heading">
-                <h2 id="search-heading">Find Your Vibe</h2>
+                <h2 id="search-heading">Find Your Place</h2>
+                <p class="search-quote">"Because Rome wasn't built in a day."</p>
 
                 <form id="vibe-form">
                     <div class="input-group">
-                        <label for="neighborhood-input">Enter your neighborhood</label>
-                        <input type="text" id="neighborhood-input" placeholder="e.g., Downtown, Arts District" required aria-required="true" />
+                        <label for="neighborhood-input">Enter your city or neighborhood</label>
+                        <input type="text" id="neighborhood-input" required aria-required="true" />
                     </div>
 
                     <fieldset class="vibe-grid">
@@ -84,7 +127,7 @@
                             <label class="vibe-card" tabindex="0" data-for="v-coffee">
                                 <input type="radio" id="v-coffee" name="vibe" value="coffee" />
                                 <span class="vibe-icon" aria-hidden="true">☕</span>
-                                <span class="vibe-label">Coffee & Code</span>
+                                <span class="vibe-label">Coffee & Chill</span>
                             </label>
 
                             <label class="vibe-card" tabindex="0" data-for="v-history">
@@ -107,21 +150,96 @@
 
                             <label class="vibe-card" tabindex="0" data-for="v-urban">
                                 <input type="radio" id="v-urban" name="vibe" value="urban" />
-                                <span class="vibe-icon" aria-hidden="true">🗺️</span>
-                                <span class="vibe-label">Urban Art</span>
+                                <span class="vibe-icon" aria-hidden="true">
+                                    <svg class="waterfall-logo" viewBox="0 0 99.32 122.88" width="24" height="24" aria-label="Waterfall" role="img" xmlns="http://www.w3.org/2000/svg">
+                                        <title>Waterfall</title>
+                                        <path fill="#475569" d="M0,81.48h0.07l0-0.02c1.05-7.73,9.44-13.85,24.53-18.5c2.26-25.05,6.57-43.77,13.16-54.03L0,0V81.48L0,81.48z M98.51,81.48h0.13c0.29-26.76,1.31-53.52,0.14-80.28c-8.44,0.27-22.51,4.95-29.89,7.78l-0.35,0.05 C67.22,26.87,66.69,44.09,68,61.63C83.85,65.14,96.52,70.38,98.51,81.48L98.51,81.48z"/>
+                                        <path fill="#0284c7" d="M24.6,62.97c2.38-26.32,7.01-45.64,14.18-55.52l29.86,0.06C67.25,25.9,66.66,43.59,68,61.63 c16.09,3.55,28.9,8.9,30.59,20.34c-1.4,15.5-29.09,40.95-52.09,40.9c-12.43-0.03-15.86-10.72-23.77-19.77 C19,98.84,9.01,94.94,6.3,92.71c-4.52-3.73-6.43-7.37-6.24-11.25C1.12,73.73,9.51,67.61,24.6,62.97L24.6,62.97z M48.14,15.23 c-2.16,5.65-3.61,10.68-4.87,17.65c-0.86,4.73-1.48,9.82-1.84,15.31c-0.38,5.82-0.32,4.49-3.6,10.16 c0.13-8.91,0.91-18.87,2.21-26.04c1.3-7.21,3.13-13.63,5.34-19.43L48.14,15.23L48.14,15.23z M67.25,68.97 c3.24,1.42,5.19,3.24,5.19,5.22c0,4.57-10.35,8.27-23.12,8.27c-12.77,0-23.12-3.7-23.12-8.27c0-1.91,1.81-3.67,4.84-5.07 c-0.85,0.75-1.32,1.57-1.32,2.43c0,3.71,8.74,6.71,19.51,6.71s19.51-3.01,19.51-6.71C68.75,70.64,68.22,69.76,67.25,68.97 L67.25,68.97z M79.26,71.97c5.42,2.52,8.67,5.74,8.67,9.25c0,8.09-17.29,14.65-38.61,14.65c-21.33,0-38.61-6.56-38.61-14.65 c0-3.38,3.02-6.49,8.09-8.97c-1.42,1.33-2.2,2.79-2.2,4.3c0,6.56,14.59,11.89,32.59,11.89 c18,0,32.59-5.32,32.59-11.89C81.78,74.93,80.88,73.38,79.26,71.97L79.26,71.97z M60.8,14.67c-0.99,2.59-1.76,5.21-2.45,7.97c-0.68,2.76-1.68,7.22-2.31,10.44 l-2.82-2.13c0.63-3.21,1.23-6.2,1.95-9.1c0.72-2.9,1.08-3.97,2.11-6.67L60.8,14.67L60.8,14.67z M55.31,38.14 c-0.51,3.88-1.02,7.76-1.52,11.65c-0.31,4.06-1.63,6.82-3.39,9c-0.21-3.12-0.15-6.29,0.13-9.29 c0.3-3.31,1.39-11.31,2.07-13.91 L55.31,38.14L55.31,38.14z"/>
+                                        <path fill="#ffffff" d="M48.14,15.23c-2.16,5.65-3.61,10.68-4.87,17.65c-0.86,4.73-1.48,9.82-1.84,15.31 c-0.38,5.82-0.32,4.49-3.6,10.16c0.13-8.91,0.91-18.87,2.21-26.04c1.3-7.21,3.13-13.63,5.34-19.43L48.14,15.23L48.14,15.23z M67.25,68.97c3.24,1.42,5.19,3.24,5.19,5.22c0,4.57-10.35,8.27-23.12,8.27c-12.77,0-23.12-3.7-23.12-8.27 c0-1.91,1.81-3.67,4.84-5.07c-0.85,0.75-1.32,1.57-1.32,2.43c0,3.71,8.74,6.71,19.51,6.71s19.51-3.01,19.51-6.71 C68.75,70.64,68.22,69.76,67.25,68.97L67.25,68.97z M79.26,71.97c5.42,2.52,8.67,5.74,8.67,9.25c0,8.09-17.29,14.65-38.61,14.65 c-21.33,0-38.61-6.56-38.61-14.65c0-3.38,3.02-6.49,8.09-8.97c-1.42,1.33-2.2,2.79-2.2,4.3c0,6.56,14.59,11.89,32.59,11.89 c18,0,32.59-5.32,32.59-11.89C81.78,74.93,80.88,73.38,79.26,71.97L79.26,71.97z M60.8,14.67c-0.99,2.59-1.76,5.21-2.45,7.97 c-0.68,2.76-1.68,7.22-2.31,10.44l-2.82-2.13c0.63-3.21,1.23-6.2,1.95-9.1c0.72-2.9,1.08-3.97,2.11-6.67L60.8,14.67L60.8,14.67z M55.31,38.14c-0.51,3.88-1.02,7.76-1.52,11.65c-0.31,4.06-1.63,6.82-3.39,9c-0.21-3.12-0.15-6.29,0.13-9.29 c0.3-3.31,1.39-11.31,2.07-13.91L55.31,38.14L55.31,38.14z"/>
+                                    </svg>
+                                </span>
+                                <span class="vibe-label">Swimming Spots</span>
                             </label>
                         </div>
                     </fieldset>
 
-                    <button type="submit" class="submit-btn" id="discoverBtn">Discover Spot</button>
+                    <button type="submit" class="submit-btn" id="discoverBtn">GO!</button>
                 </form>
+
+                <section class="share-place-section" aria-labelledby="share-place-heading">
+                    <h3 id="share-place-heading">Suggest a place</h3>
+                    <p class="share-place-note">Submissions are saved in this browser only for now. A shared service is needed for other users to see them.</p>
+                    <form id="share-place-form" class="share-place-form">
+                        <div>
+                            <label for="share-place-name">Place name</label>
+                            <input id="share-place-name" name="title" required />
+                        </div>
+                        <div>
+                            <label for="share-place-category">Category</label>
+                            <select id="share-place-category" name="vibe" required>
+                                <option value="" selected disabled>Choose a category</option>
+                                <option value="quiet">Quiet Refuge</option>
+                                <option value="coffee">Coffee & Chill</option>
+                                <option value="history">Weird History</option>
+                                <option value="photos">Street Art</option>
+                                <option value="people">People Watching</option>
+                                <option value="urban">Swimming Spots</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="share-place-city">City</label>
+                            <input id="share-place-city" name="city" required />
+                        </div>
+                        <div>
+                            <label for="share-place-address">Address or area</label>
+                            <input id="share-place-address" name="coords" required />
+                        </div>
+                        <div>
+                            <label for="share-place-description">Description</label>
+                            <textarea id="share-place-description" name="description" required></textarea>
+                        </div>
+                        <div>
+                            <label for="share-place-photo">Photo URL (optional)</label>
+                            <input id="share-place-photo" name="media" type="url" />
+                        </div>
+                        <button type="submit" class="submit-btn">Add place</button>
+                    </form>
+                    <ul id="share-place-list" class="share-place-list" aria-live="polite"></ul>
+                </section>
+
             </section>
 
             <!-- CARD MATCH RESULT VIEW -->
             <section id="result-section" class="hidden" aria-labelledby="result-heading">
                 <h2 id="result-heading">Spot Found</h2>
 
-                <article class="spot-card" id="spotCard" aria-live="polite">
+                <section id="spot-picker" class="spot-picker hidden" aria-label="Choose a search result">
+                    <h3 id="spot-picker-heading">Choose a spot</h3>
+                    <div id="spot-options" class="spot-choice-grid"></div>
+                    <button type="button" id="spot-picker-back" class="btn text-btn">Back to search</button>
+                </section>
+
+                <section id="quiet-spot-editor" class="hidden" aria-label="Add a Quiet Refuge location">
+                    <form id="quiet-location-form" class="quiet-location-form">
+                        <div>
+                            <label for="quiet-location-name">Location name</label>
+                            <input id="quiet-location-name" name="name" required />
+                        </div>
+                        <div>
+                            <label for="quiet-location-address">Address or area</label>
+                            <input id="quiet-location-address" name="address" required />
+                        </div>
+                        <div>
+                            <label for="quiet-location-note">Description or note</label>
+                            <textarea id="quiet-location-note" name="note"></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Add location</button>
+                    </form>
+                    <ul id="quiet-location-list" class="quiet-location-list" aria-live="polite"></ul>
+                    <button type="button" id="quiet-back-btn" class="btn text-btn">Back to search</button>
+                </section>
+
+                <article class="spot-card hidden" id="spotCard" aria-live="polite">
                     <h3 id="spotTitle">—</h3>
                     <div class="spot-media-placeholder" id="spotMedia">Image / Media</div>
                     <p id="spotDescription">Description</p>
@@ -149,38 +267,552 @@
 
     <script>
         (function () {
-            // Sample spot dataset
+            const QUIET_LOCATIONS_KEY = 'hiddenpaths_quiet_locations';
+            const COMMUNITY_LOCATIONS_KEY = 'hiddenpaths_community_locations';
+            const COMMUNITY_CATEGORIES = new Set(['quiet', 'coffee', 'history', 'photos', 'people', 'urban']);
+            const KAWAKAWA_BAY_IMAGE = 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Kawakawa_Bay.jpg/960px-Kawakawa_Bay.jpg';
+            const KAWAKAWA_BAY_FILE_PAGE = 'https://commons.wikimedia.org/wiki/File:Kawakawa_Bay.jpg';
+            const OPEN_BOOK_IMAGE = 'https://images.squarespace-cdn.com/content/v1/582ab67cc534a59cbf717ab6/1602111236045-CA5Y5EB3XY8Z5B2WOZX4/The+Open+Book+street+front?format=1000w';
+            const OPEN_BOOK_PAGE = 'https://theopenbook.co.nz/';
+
+            function detectCity(text) {
+                if (!text || typeof text !== 'string') return '';
+                const lower = text.toLowerCase();
+                const cities = ['Auckland', 'Wellington', 'Christchurch', 'Rotorua', 'Queenstown', 'Hamilton', 'Tauranga', 'Napier', 'Nelson'];
+                for (const c of cities) {
+                    if (lower.includes(c.toLowerCase())) return c;
+                }
+                return '';
+            }
+
+            function loadCommunityLocations() {
+                try {
+                    const locations = JSON.parse(localStorage.getItem(COMMUNITY_LOCATIONS_KEY) || '[]');
+                    return Array.isArray(locations)
+                        ? locations.filter(location => location && COMMUNITY_CATEGORIES.has(location.vibe) && typeof location.title === 'string' && typeof location.city === 'string' && typeof location.coords === 'string' && typeof location.description === 'string')
+                        : [];
+                } catch (e) {
+                    return [];
+                }
+            }
+
+            const communityLocations = loadCommunityLocations();
+
+            function loadQuietLocations() {
+                try {
+                    const savedLocations = JSON.parse(localStorage.getItem(QUIET_LOCATIONS_KEY) || '[]');
+                    return Array.isArray(savedLocations)
+                        ? savedLocations.filter(location => location && typeof location.title === 'string' && typeof location.coords === 'string')
+                        : [];
+                } catch (e) {
+                    return [];
+                }
+            }
+
+            const DEFAULT_QUIET_LOCATIONS = [
+                {
+                    title: 'The Open Book',
+                    city: 'Auckland',
+                    description: 'A second-hand bookstore in a character-filled villa, with six rooms of books and a sunny backyard.',
+                    coords: '201 Ponsonby Road, Ponsonby, Auckland 1011, New Zealand',
+                    media: OPEN_BOOK_IMAGE,
+                    mediaAlt: 'The Open Book storefront on Ponsonby Road',
+                    mediaCredit: 'The Open Book',
+                    mediaSource: OPEN_BOOK_PAGE
+                },
+                {
+                    title: "Otari-Wilton's Bush",
+                    city: 'Wellington',
+                    description: "New Zealand's only native plant botanic garden with ancient forest trails and a tree canopy walkway.",
+                    coords: "160 Wilton Road, Wilton, Wellington, New Zealand",
+                    media: null
+                },
+                {
+                    title: 'Christchurch Botanic Gardens',
+                    city: 'Christchurch',
+                    description: 'Serene sprawling heritage gardens bordered by the winding Avon River with giant trees and peaceful lawns.',
+                    coords: 'Rolleston Avenue, Christchurch Central, Christchurch, New Zealand',
+                    media: null
+                },
+                {
+                    title: 'Government Gardens',
+                    city: 'Rotorua',
+                    description: 'Tranquil rose gardens, calm walking paths, and historic lakeside sulphur bay vistas.',
+                    coords: 'Queens Drive, Rotorua, New Zealand',
+                    media: null
+                },
+                {
+                    title: 'Queenstown Gardens',
+                    city: 'Queenstown',
+                    description: 'Tranquil pine-lined botanical peninsula on Lake Wakatipu with peaceful lakeside walking tracks and quiet rose gardens.',
+                    coords: 'Park Street, Queenstown, New Zealand',
+                    media: null
+                }
+            ];
+
+            const quietLocations = loadQuietLocations();
+            let quietLocationsChanged = false;
+            DEFAULT_QUIET_LOCATIONS.forEach(def => {
+                const existing = quietLocations.find(loc => loc.title.trim().toLowerCase() === def.title.toLowerCase());
+                if (!existing) {
+                    quietLocations.push(def);
+                    quietLocationsChanged = true;
+                } else {
+                    if (!existing.city) {
+                        existing.city = def.city;
+                        quietLocationsChanged = true;
+                    }
+                    if (def.media && !existing.media) {
+                        existing.media = def.media;
+                        existing.mediaAlt = def.mediaAlt;
+                        existing.mediaCredit = def.mediaCredit;
+                        existing.mediaSource = def.mediaSource;
+                        quietLocationsChanged = true;
+                    }
+                }
+            });
+            if (quietLocationsChanged) {
+                try {
+                    localStorage.setItem(QUIET_LOCATIONS_KEY, JSON.stringify(quietLocations));
+                } catch (e) {
+                    // Keep the location available for this session if storage is unavailable.
+                }
+            }
+
+            // Spot dataset with multi-city coverage across New Zealand
             const SPOTS = {
-                quiet: [
-                    { title: "Willow Pocket Garden", description: "A tucked-away garden with shaded benches, quiet fountains, and wifi-friendly nooks.", coords: "37.7749,-122.4194", media: null },
-                    { title: "Elm Lane Courtyard", description: "Hidden courtyard behind a bookstore — great for reading and reflection.", coords: "37.7750,-122.4183", media: null }
-                ],
+                quiet: quietLocations,
                 coffee: [
-                    { title: "Circuit Coffee Lab", description: "Small roast lab with steady plugs and cozy tables for long coding sessions.", coords: "37.7767,-122.4170", media: null },
-                    { title: "Grounds & Gears", description: "Indie shop with excellent espresso and quiet corners.", coords: "37.7755,-122.4161", media: null }
+                    {
+                        title: "Coffee Pen",
+                        city: "Auckland",
+                        description: "Tucked-away neighborhood gem famed for artisan coffee, hand-poured brews, and fresh house baking.",
+                        coords: "6 Basque Road, Eden Terrace, Auckland, New Zealand",
+                        media: "https://scontent.cdninstagram.com/v/t51.2885-19/417767293_931715507798003_6037002494757667782_n.jpg?stp=dst-jpg_s150x150_tt6&_nc_cat=111&ig_cache_key=GH2f5hjzv9-rY08DAMaDLZjIvcdTbkULAAAB1501500j-ccb7-5&_nc_sid=669407&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy40NjUuQzMifQ%3D%3D&_nc_ohc=rKk_SGwZuZIQ7kNvwGChVCm&_nc_oc=AdqzpAlcJep8vi5otiXKflbnBYUzFDABj_deJF2I6Z55PftF7izPdUbNSaGsy8kpwoc&_nc_zt=24&_nc_ht=scontent.cdninstagram.com&_nc_ss=7060f&oh=00_AQS51yjpa65YR9zVLD-kvvZ5x2jM-UFHwgTRb3PCTh4M0Q&oe=6AF19AA1",
+                        mediaAlt: "Coffee Pen's official Instagram profile image",
+                        mediaCredit: "Coffee Pen",
+                        mediaSource: "https://www.instagram.com/coffee_pen_/"
+                    },
+                    {
+                        title: "Daily Daily Coffee",
+                        city: "Auckland",
+                        description: "Minimalist coffee dispensary serving meticulously poured single origins and filter roasts on K Road.",
+                        coords: "452 Karangahape Road, Auckland, New Zealand",
+                        media: null
+                    },
+                    {
+                        title: "Customs Coffee Supreme",
+                        city: "Wellington",
+                        description: "Iconic Wellington institution serving superlative espresso and toasties in the vibrant creative quarter.",
+                        coords: "39 Ghuznee Street, Te Aro, Wellington, New Zealand",
+                        media: null
+                    },
+                    {
+                        title: "The Flight Hangar",
+                        city: "Wellington",
+                        description: "Flagship roastery cafe with tasting flights, siphon brews, and industrial warehouse vibes.",
+                        coords: "119 Dixon Street, Te Aro, Wellington, New Zealand",
+                        media: null
+                    },
+                    {
+                        title: "C1 Espresso",
+                        city: "Christchurch",
+                        description: "Famous rebuild-era cafe delivering sliders through pneumatic ceiling tubes with superb house coffee.",
+                        coords: "185 High Street, Christchurch Central, Christchurch, New Zealand",
+                        media: null
+                    },
+                    {
+                        title: "Picnic Cafe",
+                        city: "Rotorua",
+                        description: "Cozy local cafe serving rich flat whites and fresh brioche right in the heart of town.",
+                        coords: "1162 Hinemoa Street, Rotorua, New Zealand",
+                        media: null
+                    },
+                    {
+                        title: "Patagonia Chocolates & Coffee",
+                        city: "Queenstown",
+                        description: "Lakeside artisanal cafe with rich roasts and panoramic views across Lake Wakatipu.",
+                        coords: "50 Beach Street, Queenstown, New Zealand",
+                        media: null
+                    }
                 ],
                 history: [
-                    { title: "Old Beacon Alley", description: "An alley lined with plaques & odd artifacts telling local secrets.", coords: "37.7740,-122.4152", media: null },
-                    { title: "Foundry Steps", description: "Remnants of a 19th-century foundry with evocative murals.", coords: "37.7738,-122.4140", media: null }
+                    {
+                        title: "Underground Toilet",
+                        city: "Auckland",
+                        description: "The former underground women's convenience near the Auckland Art Gallery, now closed; a surviving glimpse of the city's underground history.",
+                        coords: "Wellesley Street East, Auckland CBD, Auckland, New Zealand",
+                        media: "https://media.rnztools.nz/rnz/image/upload/s--PdrUrm82--/c_scale,f_auto,q_auto,w_576/v1643214185/4PA8IK7_gallery_image_16704?_a=BACCd2AD",
+                        mediaAlt: "Interior of the Wellesley Street East underground toilets",
+                        mediaCredit: "RNZ heritage toilets gallery",
+                        mediaSource: "https://www.rnz.co.nz/national/programmes/nz-society/galleries/aucklands-heritage-toilets"
+                    },
+                    {
+                        title: "North Head Historic Reserve",
+                        city: "Auckland",
+                        description: "Network of 1880s military gun emplacements, searchlight bunkers, and underground tunnels overlooking the Waitematā Harbour.",
+                        coords: "North Head, Devonport, Auckland, New Zealand",
+                        media: null
+                    },
+                    {
+                        title: "Wright's Hill Fortress",
+                        city: "Wellington",
+                        description: "Vast underground WWII fortress and counter-bombardment coastal defense network burrowed deep into the hillside.",
+                        coords: "Wrights Hill Road, Karori, Wellington, New Zealand",
+                        media: null
+                    },
+                    {
+                        title: "Old St Paul's",
+                        city: "Wellington",
+                        description: "Stunning 1866 wooden Gothic Revival cathedral constructed completely of indigenous timber.",
+                        coords: "34 Mulgrave Street, Pipitea, Wellington, New Zealand",
+                        media: null
+                    },
+                    {
+                        title: "Rotorua Bath House",
+                        city: "Rotorua",
+                        description: "Iconic 1908 Elizabethan-style spa house showcasing thermal heritage and early curative geothermal tourism.",
+                        coords: "Queens Drive, Government Gardens, Rotorua, New Zealand",
+                        media: "https://upload.wikimedia.org/wikipedia/commons/7/72/Rotorua.Bath.House.JPG",
+                        mediaAlt: "Exterior of the Rotorua Bath House (Rotorua Museum), Government Gardens",
+                        mediaCredit: "fr:Utilisateur:FRED / Wikimedia Commons",
+                        mediaSource: "https://commons.wikimedia.org/wiki/File:Rotorua.Bath.House.JPG",
+                        mediaLicense: "CC BY-SA 3.0",
+                        mediaLicenseUrl: "https://creativecommons.org/licenses/by-sa/3.0/"
+                    },
+                    {
+                        title: "Pink and White Terraces",
+                        city: "Rotorua",
+                        description: "Famed as the Eighth Wonder of the World, these legendary silica geothermal cascades were buried in the catastrophic 1886 Mount Tarawera eruption.",
+                        coords: "Lake Rotomahana, Rotorua, New Zealand",
+                        media: "https://www.waimangu.co.nz/wp-content/uploads/2023/12/pink-terraces-image-1024x576.jpg",
+                        mediaAlt: "Pink and White Terraces image from Waimangu Volcanic Valley",
+                        mediaCredit: "Waimangu Volcanic Valley",
+                        mediaSource: "https://www.waimangu.co.nz/history/pink-and-white-terraces/"
+                    },
+                    {
+                        title: "Arrowtown Chinese Settlement",
+                        city: "Queenstown",
+                        description: "Restored 1860s gold-rush settlement of humble sod-and-stone huts among the historic mining tracks.",
+                        coords: "Buckingham Street, Arrowtown, Queenstown, New Zealand",
+                        media: null
+                    }
                 ],
                 photos: [
-                    { title: "Graffito Row", description: "A vibrant block of rotating murals — perfect for photography.", coords: "37.7721,-122.4123", media: null },
-                    { title: "Colorway Underpass", description: "Tunnel with layered street art and dynamic textures.", coords: "37.7710,-122.4100", media: null }
+                    {
+                        title: "Absolute Sovereignty",
+                        city: "Auckland",
+                        description: "Large-scale street mural by Owen Dippie celebrating cultural identity.",
+                        coords: "85 Greys Avenue, Auckland CBD, Auckland, New Zealand",
+                        media: "https://streetartcities.com/media/4/480caab1-4f7a-43f4-9277-ab47988462b9/2048.jpg",
+                        mediaAlt: "Absolute Sovereignty mural by Owen Dippie at 85 Greys Avenue, Auckland",
+                        mediaCredit: "Owen Dippie / Street Art Cities",
+                        mediaSource: "https://owendippie.com/"
+                    },
+                    {
+                        title: "Cross Street Murals",
+                        city: "Auckland",
+                        description: "A back-alley haven of vibrant rolling murals and independent street art just off K Road.",
+                        coords: "Cross Street, Auckland Central, Auckland, New Zealand",
+                        media: null
+                    },
+                    {
+                        title: "Hannahs Laneway",
+                        city: "Wellington",
+                        description: "Vibrant pedestrian alleyway packed with bold murals, festoon lights, and craft artisan makers.",
+                        coords: "Hannahs Laneway, Te Aro, Wellington, New Zealand",
+                        media: null
+                    },
+                    {
+                        title: "Cable Car Lane Murals",
+                        city: "Wellington",
+                        description: "Colorful heritage and pop art murals leading up to the historic red Wellington Cable Car.",
+                        coords: "280 Lambton Quay, Wellington, New Zealand",
+                        media: null
+                    },
+                    {
+                        title: "Christchurch Street Art Trail",
+                        city: "Christchurch",
+                        description: "Citywide open-air gallery of massive post-quake building murals by world-renowned street artists.",
+                        coords: "High Street & Manchester Street, Christchurch, New Zealand",
+                        media: null
+                    }
                 ],
                 people: [
-                    { title: "Corner Cafe Terrace", description: "Wide terrace facing the plaza — excellent for people watching.", coords: "37.7700,-122.4080", media: null },
-                    { title: "Market Bench Circle", description: "A semicircle of benches next to a curated market.", coords: "37.7690,-122.4060", media: null }
+                    {
+                        title: "Auckland Ferry Terminal",
+                        city: "Auckland",
+                        description: "Watch commuters and ferries move through the waterfront terminal against the harbor backdrop.",
+                        coords: "Auckland Ferry Terminal, Quay Street, Auckland, New Zealand",
+                        media: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Downtown_Ferry_Terminal%2C_Quay_Street%2C_Auckland.jpg/960px-Downtown_Ferry_Terminal%2C_Quay_Street%2C_Auckland.jpg",
+                        mediaAlt: "Downtown Ferry Terminal on Quay Street, Auckland",
+                        mediaCredit: "AnnWoolliams / Wikimedia Commons",
+                        mediaSource: "https://commons.wikimedia.org/wiki/File:Downtown_Ferry_Terminal,_Quay_Street,_Auckland.jpg",
+                        mediaLicense: "CC BY-SA 4.0",
+                        mediaLicenseUrl: "https://creativecommons.org/licenses/by-sa/4.0/"
+                    },
+                    {
+                        title: "Karangahape Road",
+                        city: "Auckland",
+                        description: "A lively eclectic street with vintage shops, music venues, and vibrant street life to watch.",
+                        coords: "Karangahape Road, Auckland, New Zealand",
+                        media: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Rainbow_Bridge%2C_Auckland_PA01.jpg/960px-Rainbow_Bridge%2C_Auckland_PA01.jpg",
+                        mediaAlt: "Rainbow Bridge bus shelters on Karangahape Road, Auckland",
+                        mediaCredit: "Paora / Wikimedia Commons",
+                        mediaSource: "https://commons.wikimedia.org/wiki/File:Rainbow_Bridge,_Auckland_PA01.jpg",
+                        mediaLicense: "CC0",
+                        mediaLicenseUrl: "https://creativecommons.org/publicdomain/zero/1.0/"
+                    },
+                    {
+                        title: "Wellington Waterfront Promenade",
+                        city: "Wellington",
+                        description: "Stroll along Queens Wharf past skaters, seaside diners, harbor jumpers, and rowing crews.",
+                        coords: "Waterfront Walkway, Queens Wharf, Wellington, New Zealand",
+                        media: null
+                    },
+                    {
+                        title: "Cuba Mall & Bucket Fountain",
+                        city: "Wellington",
+                        description: "Bohemian pedestrian strip filled with street performers, quirky shops, and outdoor cafe seating.",
+                        coords: "Cuba Street, Te Aro, Wellington, New Zealand",
+                        media: null
+                    },
+                    {
+                        title: "Steamer Wharf",
+                        city: "Queenstown",
+                        description: "Bustling alpine lakefront where crowds gather to watch the TSS Earnslaw steam in and out.",
+                        coords: "88 Beach Street, Queenstown, New Zealand",
+                        media: null
+                    },
+                    {
+                        title: "Riverside Market Promenade",
+                        city: "Christchurch",
+                        description: "Vibrant indoor market terrace overlooking the Avon River promenade and pedestrian bridge.",
+                        coords: "96 Oxford Terrace, Christchurch Central, Christchurch, New Zealand",
+                        media: null
+                    }
                 ],
                 urban: [
-                    { title: "Steel & Neon Walk", description: "A stretch of contemporary urban installations and sculptures.", coords: "37.7680,-122.4040", media: null },
-                    { title: "Mosaic Overpass", description: "Large mosaic panels under a pedestrian overpass.", coords: "37.7670,-122.4020", media: null }
+                    {
+                        title: "Kawa Kawa Bay",
+                        city: "Auckland",
+                        description: "A quiet coastal bay with a beach and views across the Hauraki Gulf.",
+                        coords: "Kawakawa Bay, Auckland, New Zealand",
+                        media: KAWAKAWA_BAY_IMAGE,
+                        mediaAlt: "Kawakawa Bay coastline, Auckland, New Zealand",
+                        mediaCredit: "russellstreet / Wikimedia Commons",
+                        mediaSource: KAWAKAWA_BAY_FILE_PAGE,
+                        mediaLicense: "CC BY-SA 2.0",
+                        mediaLicenseUrl: "https://creativecommons.org/licenses/by-sa/2.0/"
+                    },
+                    {
+                        title: "Lake Wainamu",
+                        city: "Auckland",
+                        description: "A freshwater swimming hole beside the dunes at Bethells Beach.",
+                        coords: "Lake Wainamu, Bethells Beach, Auckland, New Zealand",
+                        media: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Bethells_Beach%2C_Lake_Wainamu.jpg/960px-Bethells_Beach%2C_Lake_Wainamu.jpg",
+                        mediaAlt: "Lake Wainamu near Bethells Beach",
+                        mediaCredit: "maticulous / Wikimedia Commons",
+                        mediaSource: "https://commons.wikimedia.org/wiki/File:Bethells_Beach,_Lake_Wainamu.jpg",
+                        mediaLicense: "CC BY 2.0",
+                        mediaLicenseUrl: "https://creativecommons.org/licenses/by/2.0/"
+                    },
+                    {
+                        title: "Kerosene Creek Falls",
+                        city: "Rotorua",
+                        description: "Natural thermally heated freshwater waterfall and stream swimming spot nestled in lush native bush.",
+                        coords: "Old Taupo Road, Rotorua, New Zealand",
+                        media: null
+                    },
+                    {
+                        title: "Lake Tarawera Hot Water Beach",
+                        city: "Rotorua",
+                        description: "Remote geothermal sandy bay where natural steaming spring water seeps directly into the cool lake.",
+                        coords: "Te Rata Bay, Lake Tarawera, Rotorua, New Zealand",
+                        media: null
+                    },
+                    {
+                        title: "Oriental Bay Beach",
+                        city: "Wellington",
+                        description: "Golden sand inner-harbour beach with swim pontoons and panoramic views of the Wellington skyline.",
+                        coords: "Oriental Parade, Oriental Bay, Wellington, New Zealand",
+                        media: null
+                    },
+                    {
+                        title: "Scorching Bay",
+                        city: "Wellington",
+                        description: "Sheltered turquoise swimming bay on the Miramar Peninsula with grassy picnic areas and calm waters.",
+                        coords: "Karaka Bay Road, Scorching Bay, Wellington, New Zealand",
+                        media: null
+                    },
+                    {
+                        title: "Queenstown Bay Beach",
+                        city: "Queenstown",
+                        description: "Crystal-clear glacier-fed beach on Lake Wakatipu flanked by majestic Southern Alps peaks.",
+                        coords: "Marine Parade, Queenstown, New Zealand",
+                        media: null
+                    },
+                    {
+                        title: "Lake Hayes Swimming Point",
+                        city: "Queenstown",
+                        description: "Warm, mirror-like freshwater lake surrounded by willow trees and mountain reflections.",
+                        coords: "Lake Hayes, Queenstown, New Zealand",
+                        media: null
+                    },
+                    {
+                        title: "Corsair Bay",
+                        city: "Christchurch",
+                        description: "Sheltered harbor swimming bay with swim pontoon, green picnic lawns, and calm water.",
+                        coords: "Corsair Bay, Lyttelton Harbour, Christchurch, New Zealand",
+                        media: null
+                    }
                 ]
             };
 
+            const SUPPLEMENTAL_SPOTS = {
+                quiet: [
+                    ["Auckland", "Auckland Domain Wintergardens", "A peaceful garden retreat with historic glasshouses and sheltered paths.", "Wintergardens, Auckland Domain, Auckland, New Zealand"],
+                    ["Auckland", "Cornwall Park", "Open lawns, mature trees, and quiet walking paths around Maungakiekie.", "Green Lane West, Epsom, Auckland, New Zealand"],
+                    ["Auckland", "Auckland Botanic Gardens", "A spacious collection of themed gardens, lakeside paths, and calm lawns.", "102 Hill Road, Manurewa, Auckland, New Zealand"],
+                    ["Auckland", "Western Springs Lakeside Park", "A tranquil loop track circles a freshwater lake among mature trees and birdlife.", "Great North Road, Western Springs, Auckland, New Zealand"],
+                    ["Wellington", "Wellington Botanic Garden", "Quiet hillside paths, rose gardens, and native bush above the city.", "101 Glenmore Street, Kelburn, Wellington, New Zealand"],
+                    ["Wellington", "Zealandia Te Māra a Tāne", "A peaceful valley sanctuary with forest tracks and native birdsong.", "53 Waiapu Road, Karori, Wellington, New Zealand"],
+                    ["Wellington", "Matiu/Somes Island", "A calm island reserve with walking tracks, birdlife, and harbour views.", "Matiu/Somes Island, Wellington Harbour, New Zealand"],
+                    ["Wellington", "Red Rocks Coastal Walk", "A restorative coastal walk over open shoreline with broad sea views.", "Owhiro Bay Parade, Owhiro Bay, Wellington, New Zealand"],
+                    ["Christchurch", "Mona Vale Garden Park", "A peaceful heritage garden with lawns, mature trees, and the Avon River.", "40 Mona Vale Avenue, Fendalton, Christchurch, New Zealand"],
+                    ["Christchurch", "Riccarton Bush", "A quiet native forest walk among kahikatea trees beside historic Riccarton House.", "16 Kahu Road, Riccarton, Christchurch, New Zealand"],
+                    ["Christchurch", "Hagley Park", "Broad lawns, tree-lined paths, and quiet river walks in the city centre.", "Riccarton Avenue, Christchurch Central, Christchurch, New Zealand"],
+                    ["Christchurch", "Travis Wetland Nature Heritage Park", "A calm wetland loop with boardwalks, native plants, and abundant birdlife.", "Traviss Road, Burwood, Christchurch, New Zealand"],
+                    ["Rotorua", "Whakarewarewa Forest", "Shaded redwood and native forest trails for a quiet walk among the trees.", "Long Mile Road, Whakarewarewa, Rotorua, New Zealand"],
+                    ["Rotorua", "Hamurana Springs", "Clear spring water, native forest, and a gentle riverside walking track.", "773 Hamurana Road, Hamurana, Rotorua, New Zealand"],
+                    ["Rotorua", "Lake Tikitapu Scenic Reserve", "A peaceful lakeside reserve with forest trails and a sheltered beach.", "Tarawera Road, Lake Tikitapu, Rotorua, New Zealand"],
+                    ["Rotorua", "Kuirau Park", "A central geothermal park with gardens, footpaths, and quiet lake views.", "Ranolf Street, Rotorua, New Zealand"],
+                    ["Queenstown", "Bob's Cove Track", "A short, tranquil bush walk opening onto a secluded Lake Wakatipu bay.", "Glenorchy-Queenstown Road, Queenstown, New Zealand"],
+                    ["Queenstown", "Moke Lake", "A quiet alpine lake with an easy shoreline walk and mountain reflections.", "Moke Lake Road, Queenstown, New Zealand"],
+                    ["Queenstown", "Glenorchy Lagoon Walkway", "A peaceful boardwalk through wetlands with views of the surrounding mountains.", "Glenorchy-Routeburn Road, Glenorchy, New Zealand"],
+                    ["Queenstown", "Sunshine Bay Track", "A quiet lakeside path through native bush to a secluded bay.", "Sunshine Bay Track, Queenstown, New Zealand"],
+                ],
+                coffee: [
+                    ["Auckland", "Bestie Cafe", "A welcoming K Road cafe known for brunch, baked treats, and well-made coffee.", "South/City Market, 1A-3B Cross Street, Auckland, New Zealand"],
+                    ["Auckland", "Remedy Coffee", "A relaxed central cafe serving espresso, cabinet food, and vegetarian-friendly meals.", "1 Wellesley Street West, Auckland Central, New Zealand"],
+                    ["Auckland", "Ozone Coffee Roasters", "A spacious roastery cafe serving carefully sourced coffee and seasonal food.", "1/18 Westmoreland Street West, Grey Lynn, Auckland, New Zealand"],
+                    ["Wellington", "Prefab", "A busy neighbourhood favourite for excellent coffee, brunch, and house baking.", "14 Jessie Street, Te Aro, Wellington, New Zealand"],
+                    ["Wellington", "Raglan Roast Coffee", "A laid-back local roastery cafe for espresso and freshly roasted beans.", "40 Abel Smith Street, Te Aro, Wellington, New Zealand"],
+                    ["Wellington", "Pour and Twist", "A small specialty coffee bar pouring carefully prepared espresso and filter coffee.", "Level 1, 147 Willis Street, Wellington, New Zealand"],
+                    ["Christchurch", "Addington Coffee Co-op", "A community-minded cafe in a former church with good coffee and a generous menu.", "297 Lincoln Road, Addington, Christchurch, New Zealand"],
+                    ["Christchurch", "Black Betty Cafe", "A lively central cafe serving specialty coffee, brunch, and house-made cabinet food.", "165 Madras Street, Christchurch Central, New Zealand"],
+                    ["Christchurch", "Unknown Chapter Coffee Roasters", "A central roastery cafe for freshly roasted espresso and seasonal brunch.", "254 St Asaph Street, Christchurch Central, New Zealand"],
+                    ["Christchurch", "The Caffeine Laboratory", "A specialty coffee bar focused on precise espresso and single-origin brews.", "11a Elgin Street, Sydenham, Christchurch, New Zealand"],
+                    ["Rotorua", "Third Place Cafe", "A friendly local cafe with specialty coffee, brunch, and a relaxed courtyard.", "35 Lake Road, Rotorua, New Zealand"],
+                    ["Rotorua", "Scope Cafe", "A compact city cafe serving espresso, light meals, and fresh baking.", "1209 Tutanekai Street, Rotorua, New Zealand"],
+                    ["Rotorua", "Artisan Cafe", "A popular cafe for locally roasted coffee, brunch, and homemade cabinet treats.", "1158 Pukuatua Street, Rotorua, New Zealand"],
+                    ["Rotorua", "Capers Epicurean", "A central cafe and deli offering coffee, baked goods, and a broad brunch menu.", "1181 Eruera Street, Rotorua, New Zealand"],
+                    ["Queenstown", "Bespoke Kitchen", "A bright cafe known for specialty coffee, fresh baking, and nourishing brunch.", "9 Isle Street, Queenstown, New Zealand"],
+                    ["Queenstown", "Vudu Cafe & Larder", "A popular lakefront cafe serving specialty coffee and inventive cabinet food.", "16 Rees Street, Queenstown, New Zealand"],
+                    ["Queenstown", "The Exchange", "A compact specialty coffee bar serving espresso and quick bites in central Queenstown.", "Level 1, 20 The Mall, Queenstown, New Zealand"],
+                    ["Queenstown", "Joe's Garage", "A relaxed local cafe for coffee, brunch, and hearty all-day fare.", "11 Isle Street, Queenstown, New Zealand"],
+                ],
+                history: [
+                    ["Auckland", "Howick Historical Village", "A living-history village recreating daily life in an 1840s colonial settlement.", "Antrim Road, Pakuranga, Auckland, New Zealand"],
+                    ["Auckland", "Highwic", "A grand 19th-century family home with original interiors and heritage gardens.", "40 Gillies Avenue, Epsom, Auckland, New Zealand"],
+                    ["Auckland", "Alberton", "A distinctive 1860s homestead offering a glimpse of colonial Auckland life.", "100 Mt Albert Road, Mt Albert, Auckland, New Zealand"],
+                    ["Wellington", "Katherine Mansfield House & Garden", "The restored childhood home of writer Katherine Mansfield, built in 1888.", "25 Tinakori Road, Thorndon, Wellington, New Zealand"],
+                    ["Wellington", "Nairn Street Cottage", "Wellington's oldest original cottage, furnished to show domestic life in the 19th century.", "68 Nairn Street, Mount Cook, Wellington, New Zealand"],
+                    ["Wellington", "Wellington Cable Car Museum", "Historic cable cars, machinery, and photographs tell the story of the city's famous line.", "1A Upland Road, Kelburn, Wellington, New Zealand"],
+                    ["Christchurch", "Ferrymead Heritage Park", "A recreated early Canterbury township with heritage buildings, trams, and rail exhibits.", "50 Ferrymead Park Drive, Ferrymead, Christchurch, New Zealand"],
+                    ["Christchurch", "Riccarton House", "A historic homestead on the site of one of Canterbury's earliest European settlements.", "16 Kahu Road, Riccarton, Christchurch, New Zealand"],
+                    ["Christchurch", "Quake City", "An exhibition exploring the Canterbury earthquakes and their lasting impact.", "299 Durham Street North, Christchurch Central, New Zealand"],
+                    ["Christchurch", "Sign of the Takahe", "A landmark stone building on the Port Hills with a history tied to Harry Ell's Summit Road.", "200 Hackthorne Road, Cashmere, Christchurch, New Zealand"],
+                    ["Christchurch", "Cardboard Cathedral", "An inventive transitional cathedral built after the 2011 earthquake.", "234 Hereford Street, Christchurch Central, New Zealand"],
+                    ["Rotorua", "Whakarewarewa Living Māori Village", "A living Māori village sharing local history, geothermal life, and cultural traditions.", "17 Tryon Street, Whakarewarewa, Rotorua, New Zealand"],
+                    ["Rotorua", "Te Puia", "A geothermal and cultural centre showcasing Māori arts, crafts, and the Pōhutu geyser.", "Hemo Road, Whakarewarewa, Rotorua, New Zealand"],
+                    ["Rotorua", "Buried Village of Te Wairoa", "Museum and archaeological site documenting the 1886 Tarawera eruption.", "1180 Tarawera Road, Rotorua, New Zealand"],
+                    ["Queenstown", "Lakes District Museum", "A local museum covering gold-mining, Māori history, and life in the Wakatipu district.", "49 Buckingham Street, Arrowtown, New Zealand"],
+                    ["Queenstown", "Kawarau Bridge Historic Reserve", "The 1880s bridge and former goldfield crossing above the Kawarau River.", "State Highway 6, Gibbston, Queenstown, New Zealand"],
+                    ["Queenstown", "TSS Earnslaw", "A 1912 steamship offering a living connection to Lake Wakatipu's transport history.", "Steamer Wharf, Queenstown, New Zealand"],
+                    ["Queenstown", "Arrowtown Athenaeum Hall", "A historic 1870s library and meeting hall on Arrowtown's heritage main street.", "Buckingham Street, Arrowtown, New Zealand"],
+                ],
+                photos: [
+                    ["Auckland", "Te Ara I Whiti Lightpath", "A vivid magenta cycleway with striking city views and colourful photo opportunities.", "Nelson Street, Auckland Central, New Zealand"],
+                    ["Auckland", "Onehunga Street Art", "Explore public murals and painted walls around Onehunga's village centre.", "Onehunga Mall, Onehunga, Auckland, New Zealand"],
+                    ["Auckland", "Avondale Street Art", "Local murals and public artworks add colour to the Avondale town centre.", "Rosebank Road, Avondale, Auckland, New Zealand"],
+                    ["Wellington", "Newtown Street Art Walk", "A neighbourhood walk past colourful murals and community-led artworks.", "Riddiford Street, Newtown, Wellington, New Zealand"],
+                    ["Wellington", "Waitangi Park Public Art", "Contemporary public artworks set among the park's wetlands and waterfront paths.", "Cable Street, Te Aro, Wellington, New Zealand"],
+                    ["Wellington", "Haining Street Murals", "A compact central laneway featuring changing works by local street artists.", "Haining Street, Te Aro, Wellington, New Zealand"],
+                    ["Christchurch", "The Press Building Mural", "Large-scale urban artwork adds colour to the historic former newspaper building.", "32 Cathedral Square, Christchurch Central, New Zealand"],
+                    ["Christchurch", "Worcester Boulevard Murals", "A walk through central Christchurch's public murals and post-quake street art.", "Worcester Boulevard, Christchurch Central, New Zealand"],
+                    ["Christchurch", "New Brighton Mural Trail", "Coastal suburb murals and painted community walls make an easy photo walk.", "Marine Parade, New Brighton, Christchurch, New Zealand"],
+                    ["Christchurch", "Sydenham Street Art", "Discover colourful murals across the evolving Sydenham neighbourhood.", "Colombo Street, Sydenham, Christchurch, New Zealand"],
+                    ["Rotorua", "Rotorua CBD Street Art Trail", "A walk through central Rotorua to find public murals and large-scale wall art.", "Tutanekai Street, Rotorua, New Zealand"],
+                    ["Rotorua", "Eat Streat Public Art", "Colourful public artworks and illuminated details make this dining lane a photo stop.", "Tutanekai Street, Rotorua, New Zealand"],
+                    ["Rotorua", "Rotorua Lakefront Art Walk", "Public artworks and sculptural details line the renewed lakefront promenade.", "Lakefront Drive, Rotorua, New Zealand"],
+                    ["Rotorua", "Pukuatua Street Murals", "Street-level murals bring colour to a central Rotorua shopping street.", "Pukuatua Street, Rotorua, New Zealand"],
+                    ["Rotorua", "Whakarewarewa Village Art", "Look for Māori carving, weaving, and cultural artworks throughout the village.", "17 Tryon Street, Whakarewarewa, Rotorua, New Zealand"],
+                    ["Queenstown", "Queenstown Arts Centre", "A creative community space to discover local visual art and artists.", "1st Floor, 1/5 Earl Street, Queenstown, New Zealand"],
+                    ["Queenstown", "Queenstown Mall Public Art", "Central pedestrian lanes feature public artworks against an alpine town backdrop.", "Queenstown Mall, Queenstown, New Zealand"],
+                    ["Queenstown", "Earnslaw Park Sculptures", "Lakefront public art and sculpture make a simple stop for photos by the water.", "Marine Parade, Queenstown, New Zealand"],
+                    ["Queenstown", "Frankton Track Public Art", "Walk the lakeside trail for public artworks framed by Lake Wakatipu and the Remarkables.", "Frankton Track, Queenstown, New Zealand"],
+                    ["Queenstown", "Arrowtown Art Walk", "Browse public artworks and gallery windows among Arrowtown's historic streets.", "Buckingham Street, Arrowtown, New Zealand"],
+                ],
+                people: [
+                    ["Auckland", "Viaduct Harbour", "Watch boats, diners, and waterfront activity from the busy harbour promenade.", "Viaduct Harbour Avenue, Auckland Central, New Zealand"],
+                    ["Auckland", "Britomart", "A lively city-quarter for watching commuters, shoppers, and visitors pass through.", "Britomart Place, Auckland Central, New Zealand"],
+                    ["Auckland", "Mission Bay Promenade", "A seaside promenade with beachgoers, cyclists, and views back to the city.", "Tamaki Drive, Mission Bay, Auckland, New Zealand"],
+                    ["Wellington", "Cuba Street", "A lively pedestrian stretch full of street performers, shoppers, and cafe life.", "Cuba Street, Te Aro, Wellington, New Zealand"],
+                    ["Wellington", "Courtenay Place", "A central strip with a steady flow of theatre-goers, diners, and nightlife.", "Courtenay Place, Te Aro, Wellington, New Zealand"],
+                    ["Wellington", "Harbourside Market", "Browse a bustling Sunday market beside the waterfront and watch local life unfold.", "Cable Street, Te Aro, Wellington, New Zealand"],
+                    ["Christchurch", "Cathedral Square", "A central meeting place to watch city life, visitors, and events unfold.", "Cathedral Square, Christchurch Central, New Zealand"],
+                    ["Christchurch", "New Regent Street", "Pastel heritage shopfronts and busy cafe terraces make a lively people-watching stop.", "New Regent Street, Christchurch Central, New Zealand"],
+                    ["Christchurch", "The Tannery", "A restored industrial precinct with shops and cafes where visitors gather.", "3 Garlands Road, Woolston, Christchurch, New Zealand"],
+                    ["Christchurch", "Arts Centre of Christchurch", "A lively heritage precinct where visitors browse galleries, shops, and public courtyards.", "2 Worcester Boulevard, Christchurch Central, New Zealand"],
+                    ["Rotorua", "Eat Streat", "A busy dining lane where visitors gather for food, conversation, and evening activity.", "Tutanekai Street, Rotorua, New Zealand"],
+                    ["Rotorua", "Rotorua Night Market", "A lively weekly market with food stalls, performers, and a broad mix of visitors.", "Tutanekai Street, Rotorua, New Zealand"],
+                    ["Rotorua", "Rotorua Lakefront Boardwalk", "Watch visitors and locals enjoy the lake, playground, and lakeside paths.", "Lakefront Drive, Rotorua, New Zealand"],
+                    ["Rotorua", "Whakarewarewa Village Entrance", "A lively meeting point for visitors arriving to explore the geothermal village.", "17 Tryon Street, Whakarewarewa, Rotorua, New Zealand"],
+                    ["Rotorua", "Polynesian Spa Lakefront", "A relaxed waterfront setting with visitors coming and going from the thermal pools.", "Hinemoa Street, Rotorua, New Zealand"],
+                    ["Queenstown", "Queenstown Mall", "The pedestrian heart of town is ideal for watching visitors, street performers, and shoppers.", "Queenstown Mall, Queenstown, New Zealand"],
+                    ["Queenstown", "Earnslaw Park", "A lakeside gathering place to watch boat arrivals, buskers, and waterfront crowds.", "Marine Parade, Queenstown, New Zealand"],
+                    ["Queenstown", "Skyline Gondola Base", "Watch visitors queue for the gondola and take in the energy of the town centre.", "Brecon Street, Queenstown, New Zealand"],
+                    ["Queenstown", "Arrowtown Buckingham Street", "A lively heritage main street with visitors browsing shops and historic buildings.", "Buckingham Street, Arrowtown, New Zealand"],
+                ],
+                urban: [
+                    ["Auckland", "Mission Bay Beach", "A popular sandy beach on Tamaki Drive with calm harbour swimming on settled days.", "Tamaki Drive, Mission Bay, Auckland, New Zealand"],
+                    ["Auckland", "Piha Beach", "A dramatic west-coast surf beach; check conditions and swim only between lifeguard flags.", "Seaview Road, Piha, Auckland, New Zealand"],
+                    ["Auckland", "Long Bay Beach", "A sheltered regional-park beach with a broad sand shoreline and swimming access.", "Long Bay Regional Park, Auckland, New Zealand"],
+                    ["Wellington", "Freyberg Beach", "A central harbour beach and swimming spot beside the Oriental Bay waterfront.", "Kirkcaldie Street, Oriental Bay, Wellington, New Zealand"],
+                    ["Wellington", "Island Bay Beach", "A south-coast beach with a swimming pontoon and views toward the Taputeranga Marine Reserve.", "The Parade, Island Bay, Wellington, New Zealand"],
+                    ["Wellington", "Hataitai Beach", "A small sheltered harbour beach popular for a quick dip and a waterfront walk.", "Hataitai Beach, Wellington, New Zealand"],
+                    ["Christchurch", "New Brighton Beach", "A long Pacific coastline for swimming and surfing; check surf and lifeguard conditions.", "Marine Parade, New Brighton, Christchurch, New Zealand"],
+                    ["Christchurch", "Sumner Beach", "A popular sandy beach for swimming and surfing when conditions are safe.", "Nayland Street, Sumner, Christchurch, New Zealand"],
+                    ["Christchurch", "Spencer Park Beach", "A broad coastal beach beside a regional park; check local surf and swimming conditions.", "Heyders Road, Spencerville, Christchurch, New Zealand"],
+                    ["Christchurch", "Waimairi Beach", "A popular beach north of the city with seasonal surf patrols and open-coast swimming.", "Marine Parade, Waimairi Beach, Christchurch, New Zealand"],
+                    ["Rotorua", "Blue Lake (Lake Tikitapu)", "A popular lake beach for swimming, with picnic facilities and a scenic forest setting.", "Tarawera Road, Lake Tikitapu, Rotorua, New Zealand"],
+                    ["Rotorua", "Lake Ōkareka Beach", "A small lakeside beach for swimming and relaxing in a sheltered setting.", "Acacia Road, Lake Ōkareka, Rotorua, New Zealand"],
+                    ["Rotorua", "Lake Rotoiti", "A scenic lake with established swimming areas and access to the Manupirua hot pools by boat.", "Lake Rotoiti, Rotorua, New Zealand"],
+                    ["Queenstown", "Frankton Beach", "An easy-access Lake Wakatipu swimming spot with a wide beach and mountain views.", "Frankton Beach, Queenstown, New Zealand"],
+                    ["Queenstown", "Kelvin Heights Beach", "A quieter lake beach across the Frankton Arm with clear water and open views.", "Kelvin Heights Peninsula, Queenstown, New Zealand"],
+                    ["Queenstown", "Bennetts Bluff Viewpoint Shore", "A lakeside access point on the Glenorchy road for a refreshing dip in Lake Wakatipu.", "Glenorchy-Queenstown Road, Queenstown, New Zealand"],
+                ]
+            };
+
+            Object.entries(SUPPLEMENTAL_SPOTS).forEach(([vibe, spots]) => {
+                SPOTS[vibe].push(...spots.map(([city, title, description, coords]) => ({
+                    city, title, description, coords, media: null
+                })));
+            });
+
+            communityLocations.forEach(location => {
+                SPOTS[location.vibe].push(location);
+            });
+
             // Elements
             const form = document.getElementById('vibe-form');
+            const sharePlaceForm = document.getElementById('share-place-form');
+            const sharePlaceList = document.getElementById('share-place-list');
+            const homeLink = document.getElementById('homeLink');
             const neighborhoodInput = document.getElementById('neighborhood-input');
             const resultSection = document.getElementById('result-section');
+            const resultHeading = document.getElementById('result-heading');
             const searchSection = document.getElementById('search-section');
             const spotTitle = document.getElementById('spotTitle');
             const spotDescription = document.getElementById('spotDescription');
@@ -192,9 +824,27 @@
             const status = document.getElementById('status');
             const navItems = document.querySelectorAll('.nav-item');
             const discoverBtn = document.getElementById('discoverBtn');
+            const spotPicker = document.getElementById('spot-picker');
+            const spotPickerHeading = document.getElementById('spot-picker-heading');
+            const spotOptions = document.getElementById('spot-options');
+            const spotPickerBack = document.getElementById('spot-picker-back');
+            const quietSpotEditor = document.getElementById('quiet-spot-editor');
+            const quietLocationForm = document.getElementById('quiet-location-form');
+            const quietLocationName = document.getElementById('quiet-location-name');
+            const quietLocationAddress = document.getElementById('quiet-location-address');
+            const quietLocationNote = document.getElementById('quiet-location-note');
+            const quietLocationList = document.getElementById('quiet-location-list');
+            const quietBackBtn = document.getElementById('quiet-back-btn');
 
-            // Utility: random pick
-            function pickRandom(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
+            homeLink.addEventListener('click', event => {
+                event.preventDefault();
+                resultSection.classList.add('hidden');
+                searchSection.classList.remove('hidden');
+                quietSpotEditor.classList.add('hidden');
+                spotPicker.classList.add('hidden');
+                resultHeading.textContent = 'Spot Found';
+                status.textContent = 'Ready to discover.';
+            });
 
             // Toast helper
             function showToast(text, ms = 2000) {
@@ -202,6 +852,170 @@
                 toast.style.display = 'block';
                 setTimeout(() => { toast.style.display = 'none'; }, ms);
             }
+
+            function renderCommunityLocations() {
+                sharePlaceList.replaceChildren();
+                communityLocations.forEach(location => {
+                    const item = document.createElement('li');
+                    const title = document.createElement('strong');
+                    title.textContent = location.title;
+                    const details = document.createElement('span');
+                    details.textContent = `${location.city} · ${location.vibeLabel}`;
+                    item.append(title, details);
+                    sharePlaceList.appendChild(item);
+                });
+            }
+
+            function persistCommunityLocation(location) {
+                const updatedLocations = [...communityLocations, location];
+                try {
+                    localStorage.setItem(COMMUNITY_LOCATIONS_KEY, JSON.stringify(updatedLocations));
+                } catch (e) {
+                    return false;
+                }
+
+                communityLocations.push(location);
+                SPOTS[location.vibe].push(location);
+                return true;
+            }
+
+            renderCommunityLocations();
+
+            sharePlaceForm.addEventListener('submit', event => {
+                event.preventDefault();
+                const vibe = document.getElementById('share-place-category').value;
+                const location = {
+                    title: document.getElementById('share-place-name').value.trim(),
+                    vibe,
+                    vibeLabel: document.querySelector(`#share-place-category option[value="${vibe}"]`).textContent,
+                    city: document.getElementById('share-place-city').value.trim(),
+                    coords: document.getElementById('share-place-address').value.trim(),
+                    description: document.getElementById('share-place-description').value.trim(),
+                    media: document.getElementById('share-place-photo').value.trim() || null
+                };
+
+                if (!location.title || !location.city || !location.coords || !location.description) return;
+                if (!persistCommunityLocation(location)) {
+                    showToast('Unable to save this place in this browser');
+                    return;
+                }
+
+                sharePlaceForm.reset();
+                renderCommunityLocations();
+                showToast('Place added on this device');
+            });
+
+            function persistQuietLocations() {
+                try {
+                    localStorage.setItem(QUIET_LOCATIONS_KEY, JSON.stringify(quietLocations));
+                    return true;
+                } catch (e) {
+                    return false;
+                }
+            }
+
+            function renderQuietLocations() {
+                quietLocationList.replaceChildren();
+
+                if (!quietLocations.length) {
+                    const emptyMessage = document.createElement('li');
+                    emptyMessage.className = 'quiet-location-empty';
+                    emptyMessage.textContent = 'No locations added yet.';
+                    quietLocationList.appendChild(emptyMessage);
+                    return;
+                }
+
+                quietLocations.forEach((location, index) => {
+                    const item = document.createElement('li');
+                    item.className = 'quiet-location-item';
+
+                    const details = document.createElement('div');
+                    const name = document.createElement('strong');
+                    name.textContent = location.title;
+                    const address = document.createElement('span');
+                    address.textContent = location.coords;
+                    details.append(name, address);
+
+                    if (location.description) {
+                        const note = document.createElement('span');
+                        note.textContent = location.description;
+                        details.appendChild(note);
+                    }
+
+                    const removeButton = document.createElement('button');
+                    removeButton.type = 'button';
+                    removeButton.className = 'quiet-location-remove';
+                    removeButton.setAttribute('aria-label', `Remove ${location.title}`);
+                    removeButton.textContent = '×';
+                    removeButton.addEventListener('click', () => {
+                        const [removed] = quietLocations.splice(index, 1);
+                        if (!persistQuietLocations()) {
+                            quietLocations.splice(index, 0, removed);
+                            showToast('Unable to update locations');
+                        }
+                        renderQuietLocations();
+                    });
+
+                    item.append(details, removeButton);
+                    quietLocationList.appendChild(item);
+                });
+            }
+
+            function openQuietRefugeEditor() {
+                searchSection.classList.add('hidden');
+                resultSection.classList.remove('hidden');
+                resultHeading.textContent = 'Spot Found';
+                spotCard.classList.add('hidden');
+                spotPicker.classList.add('hidden');
+                quietSpotEditor.classList.remove('hidden');
+                renderQuietLocations();
+                const featuredLocation = quietLocations.find(location => /the open book/i.test(location.title))
+                    || quietLocations.find(location => /kawa\s*kawa\s*bay/i.test(location.title));
+                if (featuredLocation) populateSpotCard(featuredLocation, 'quiet');
+                quietLocationName.focus();
+                status.textContent = 'Add a location to Quiet Refuge.';
+            }
+
+            document.querySelectorAll('input[name="vibe"]').forEach(input => {
+                input.addEventListener('change', () => {
+                    if (!input.checked) return;
+                    if (input.value === 'quiet') openQuietRefugeEditor();
+                });
+            });
+
+            quietLocationForm.addEventListener('submit', event => {
+                event.preventDefault();
+                const location = {
+                    title: quietLocationName.value.trim(),
+                    coords: quietLocationAddress.value.trim(),
+                    description: quietLocationNote.value.trim(),
+                    city: detectCity(quietLocationAddress.value) || detectCity(quietLocationName.value) || '',
+                    media: null
+                };
+
+                if (!location.title || !location.coords) return;
+
+                quietLocations.push(location);
+                if (!persistQuietLocations()) {
+                    quietLocations.pop();
+                    showToast('Unable to save location');
+                    return;
+                }
+
+                quietLocationForm.reset();
+                renderQuietLocations();
+                if (/kawa\s*kawa\s*bay/i.test(location.title)) populateSpotCard(location, 'quiet');
+                quietLocationName.focus();
+                showToast('Location added');
+            });
+
+            quietBackBtn.addEventListener('click', () => {
+                resultSection.classList.add('hidden');
+                searchSection.classList.remove('hidden');
+                quietSpotEditor.classList.add('hidden');
+                document.querySelector('[data-for="v-quiet"]').focus();
+                status.textContent = 'Ready to discover.';
+            });
 
             // Save to localStorage (simple)
             function saveSpot(spot) {
@@ -222,44 +1036,198 @@
                 return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(coords)}&query_place_id=${encodeURIComponent(title)}`;
             }
 
-            // Handle form submit
-            form.addEventListener('submit', function (e) {
-                e.preventDefault();
-                const neighborhood = neighborhoodInput.value.trim();
-                const vibe = form.elements['vibe'].value;
-                if (!vibe || !neighborhood) {
-                    status.textContent = 'Please pick a vibe and enter your neighborhood.';
+            function renderSpotMedia(spot) {
+                spotMedia.replaceChildren();
+                const isKawakawaBay = /kawa\s*kawa\s*bay/i.test(spot.title);
+                const imageUrl = spot.media || (isKawakawaBay ? KAWAKAWA_BAY_IMAGE : null);
+                if (!imageUrl) {
+                    spotMedia.textContent = 'Media placeholder';
                     return;
                 }
 
-                status.textContent = `Searching ${neighborhood} for ${vibe} spots...`;
+                const image = document.createElement('img');
+                image.src = imageUrl;
+                image.alt = spot.mediaAlt || (isKawakawaBay ? 'Kawakawa Bay in Auckland, New Zealand' : spot.title);
+                image.addEventListener('error', () => {
+                    spotMedia.textContent = 'Media placeholder';
+                }, { once: true });
+                const credit = document.createElement('small');
+                credit.className = 'spot-media-credit';
+                const sourceLink = document.createElement('a');
+                sourceLink.href = spot.mediaSource || (isKawakawaBay ? KAWAKAWA_BAY_FILE_PAGE : OPEN_BOOK_PAGE);
+                sourceLink.target = '_blank';
+                sourceLink.rel = 'noopener';
+                sourceLink.textContent = spot.mediaCredit || (isKawakawaBay ? 'russellstreet / Wikimedia Commons' : 'The Open Book');
+                credit.appendChild(sourceLink);
+                if (spot.mediaLicense && spot.mediaLicenseUrl) {
+                    credit.append(' · ');
+                    const licenseLink = document.createElement('a');
+                    licenseLink.href = spot.mediaLicenseUrl;
+                    licenseLink.target = '_blank';
+                    licenseLink.rel = 'noopener';
+                    licenseLink.textContent = spot.mediaLicense;
+                    credit.appendChild(licenseLink);
+                }
+                spotMedia.append(image, credit);
+            }
 
-                // Simulate search / pick a spot
-                const pool = SPOTS[vibe] || [];
-                const chosen = pickRandom(pool) || { title: 'No spot', description: 'No matches found.', coords: '', media: null };
+            function populateSpotCard(spot, vibe, neighborhood = '') {
+                spotTitle.textContent = spot.title;
+                spotDescription.textContent = [spot.description, neighborhood && `Near ${neighborhood}.`].filter(Boolean).join(' — ') || spot.coords;
+                renderSpotMedia(spot);
+                openMapBtn.href = mapsLink(spot.coords, spot.title);
+                openMapBtn.setAttribute('aria-label', `Open ${spot.title} in maps`);
+                saveBtn.onclick = () => saveSpot({ ...spot, media: spot.media || (/kawa\s*kawa\s*bay/i.test(spot.title) ? KAWAKAWA_BAY_IMAGE : null), vibe, neighborhood, savedAt: new Date().toISOString() });
+                spotCard.classList.remove('hidden');
+            }
 
-                // Populate UI
-                spotTitle.textContent = chosen.title;
-                spotDescription.textContent = `${chosen.description} — Near ${neighborhood}.`;
-                spotMedia.textContent = chosen.media ? '' : 'Media placeholder';
-                openMapBtn.href = mapsLink(chosen.coords, chosen.title);
-                openMapBtn.setAttribute('aria-label', `Open ${chosen.title} in maps`);
-                saveBtn.onclick = () => saveSpot({ ...chosen, neighborhood, vibe, savedAt: new Date().toISOString() });
-
-                // Show result view, hide search
+            function openSpot(spot, vibe, neighborhood = '') {
+                quietSpotEditor.classList.add('hidden');
+                spotPicker.classList.add('hidden');
+                resultHeading.textContent = 'Spot Found';
+                populateSpotCard(spot, vibe, neighborhood);
                 searchSection.classList.add('hidden');
                 resultSection.classList.remove('hidden');
-
-                // Focus management
                 openMapBtn.focus();
+                status.textContent = `Found: ${spot.title}`;
+            }
 
-                status.textContent = `Found: ${chosen.title}`;
+            function renderSpotOptions(spots, vibe, neighborhood) {
+                spotOptions.replaceChildren();
+                spots.forEach(spot => {
+                    const card = document.createElement('article');
+                    card.className = 'spot-result-card';
+
+                    const selectButton = document.createElement('button');
+                    selectButton.type = 'button';
+                    selectButton.className = 'spot-result-select';
+                    const media = document.createElement('span');
+                    media.className = 'spot-result-media';
+                    if (spot.media) {
+                        const image = document.createElement('img');
+                        image.src = spot.media;
+                        image.alt = spot.mediaAlt || spot.title;
+                        image.addEventListener('error', () => {
+                            media.classList.add('spot-result-placeholder');
+                            media.textContent = 'Media placeholder';
+                        }, { once: true });
+                        media.appendChild(image);
+                    } else {
+                        media.classList.add('spot-result-placeholder');
+                        media.textContent = 'Media placeholder';
+                    }
+
+                    const copy = document.createElement('span');
+                    copy.className = 'spot-result-copy';
+                    if (spot.city) {
+                        const cityBadge = document.createElement('span');
+                        cityBadge.className = 'spot-city-badge';
+                        cityBadge.textContent = spot.city;
+                        copy.appendChild(cityBadge);
+                    }
+                    const title = document.createElement('strong');
+                    title.textContent = spot.title;
+                    const description = document.createElement('span');
+                    description.textContent = spot.description;
+                    copy.append(title, description);
+                    selectButton.append(media, copy);
+                    selectButton.addEventListener('click', () => openSpot(spot, vibe, neighborhood));
+                    card.appendChild(selectButton);
+
+                    if (spot.mediaCredit && spot.mediaSource) {
+                        const credit = document.createElement('small');
+                        credit.className = 'spot-result-credit';
+                        const sourceLink = document.createElement('a');
+                        sourceLink.href = spot.mediaSource;
+                        sourceLink.target = '_blank';
+                        sourceLink.rel = 'noopener';
+                        sourceLink.textContent = spot.mediaCredit;
+                        credit.appendChild(sourceLink);
+                        if (spot.mediaLicense && spot.mediaLicenseUrl) {
+                            credit.append(' · ');
+                            const licenseLink = document.createElement('a');
+                            licenseLink.href = spot.mediaLicenseUrl;
+                            licenseLink.target = '_blank';
+                            licenseLink.rel = 'noopener';
+                            licenseLink.textContent = spot.mediaLicense;
+                            credit.appendChild(licenseLink);
+                        }
+                        card.appendChild(credit);
+                    }
+
+                    spotOptions.appendChild(card);
+                });
+            }
+
+            function openSpotResults(spots, vibe, neighborhood, isFiltered = false) {
+                searchSection.classList.add('hidden');
+                resultSection.classList.remove('hidden');
+                quietSpotEditor.classList.add('hidden');
+                spotCard.classList.add('hidden');
+                spotPicker.classList.remove('hidden');
+                resultHeading.textContent = 'Spots Found';
+                if (isFiltered) {
+                    spotPickerHeading.textContent = `Spots matching "${neighborhood}" (${spots.length})`;
+                    status.textContent = `${spots.length} spot${spots.length > 1 ? 's' : ''} found for "${neighborhood}".`;
+                } else if (neighborhood) {
+                    spotPickerHeading.textContent = `No exact matches in "${neighborhood}". Showing all spots (${spots.length}):`;
+                    status.textContent = `No exact matches for "${neighborhood}". Showing all ${spots.length} spots.`;
+                } else {
+                    spotPickerHeading.textContent = 'Choose a spot';
+                    status.textContent = `${spots.length} spots found.`;
+                }
+                renderSpotOptions(spots, vibe, neighborhood);
+                spotOptions.querySelector('button')?.focus();
+            }
+
+            form.addEventListener('submit', event => {
+                event.preventDefault();
+                const neighborhood = neighborhoodInput.value.trim();
+                const vibe = form.elements['vibe'].value;
+                if (!vibe || !neighborhood) {
+                    status.textContent = 'Please pick a vibe and enter your city or neighborhood.';
+                    return;
+                }
+
+                const allSpots = SPOTS[vibe] || [];
+                const query = neighborhood.toLowerCase();
+
+                function spotMatchesQuery(spot) {
+                    const searchable = [
+                        spot.city,
+                        spot.coords,
+                        spot.title,
+                        spot.description
+                    ].filter(Boolean).join(' ').toLowerCase();
+
+                    if (searchable.includes(query)) return true;
+                    const words = query.split(/[\s,]+/).filter(w => w.length > 2);
+                    return words.length > 0 && words.some(w => searchable.includes(w));
+                }
+
+                const matchingSpots = allSpots.filter(spotMatchesQuery);
+                if (matchingSpots.length > 0) {
+                    openSpotResults(matchingSpots, vibe, neighborhood, true);
+                } else {
+                    openSpotResults(allSpots, vibe, neighborhood, false);
+                }
             });
 
-            // Back to search
-            backBtn.addEventListener('click', function () {
+            spotPickerBack.addEventListener('click', () => {
                 resultSection.classList.add('hidden');
                 searchSection.classList.remove('hidden');
+                spotPicker.classList.add('hidden');
+                resultHeading.textContent = 'Spot Found';
+                discoverBtn.focus();
+                status.textContent = 'Ready to discover.';
+            });
+
+            backBtn.addEventListener('click', () => {
+                resultSection.classList.add('hidden');
+                searchSection.classList.remove('hidden');
+                quietSpotEditor.classList.add('hidden');
+                spotPicker.classList.add('hidden');
+                resultHeading.textContent = 'Spot Found';
                 discoverBtn.focus();
                 status.textContent = 'Ready to discover.';
             });

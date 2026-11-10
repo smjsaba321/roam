@@ -77,6 +77,13 @@
         .hidden { display:none !important; }
         .spot-card { background:#fff; border:1px solid #e5e7eb; border-radius:16px; padding:16px; margin-top:10px; }
         .spot-card h3 { font-size:1.25rem; margin-bottom:12px; }
+        .saved-spot-list { display:grid; gap:12px; list-style:none; }
+        .saved-spot-item { padding:14px; border:1px solid #e5e7eb; border-radius:12px; background:#fff; }
+        .saved-spot-item h3 { margin-bottom:6px; font-size:1rem; }
+        .saved-spot-item p { margin-bottom:10px; color:#6b7280; font-size:0.875rem; line-height:1.4; }
+        .saved-spot-actions { display:flex; gap:8px; }
+        .saved-spot-actions .btn { flex:1; padding:9px; font-size:0.85rem; }
+        .saved-empty { color:#6b7280; font-size:0.9rem; }
         .spot-media-placeholder { position:relative; background-color:#f3f4f6; border-radius:8px; margin-bottom:16px; display:flex; align-items:center; justify-content:center; color:#9ca3af; font-size:0.875rem; border:1px dashed #d1d5db; height:150px; overflow:hidden; }
         .spot-media-placeholder img { width:100%; height:100%; object-fit:cover; }
         .spot-media-credit { position:absolute; left:8px; right:8px; bottom:8px; padding:5px 7px; border-radius:4px; background:rgba(17,24,39,0.78); color:#fff; font-size:0.7rem; line-height:1.3; }
@@ -250,6 +257,12 @@
                         <button id="backBtn" class="btn text-btn">Back to search</button>
                     </div>
                 </article>
+            </section>
+
+            <section id="saved-section" class="hidden" aria-labelledby="saved-heading">
+                <h2 id="saved-heading">Saved Spots</h2>
+                <p id="saved-empty" class="saved-empty">You haven't saved any spots yet.</p>
+                <ul id="saved-spot-list" class="saved-spot-list" aria-live="polite"></ul>
             </section>
 
             <div id="status" class="sr-only" aria-live="polite"></div>
@@ -812,6 +825,9 @@
             const homeLink = document.getElementById('homeLink');
             const neighborhoodInput = document.getElementById('neighborhood-input');
             const resultSection = document.getElementById('result-section');
+            const savedSection = document.getElementById('saved-section');
+            const savedSpotList = document.getElementById('saved-spot-list');
+            const savedEmpty = document.getElementById('saved-empty');
             const resultHeading = document.getElementById('result-heading');
             const searchSection = document.getElementById('search-section');
             const spotTitle = document.getElementById('spotTitle');
@@ -1030,6 +1046,59 @@
                 }
             }
 
+            function renderSavedSpots() {
+                try {
+                    const saved = JSON.parse(localStorage.getItem('hiddenpaths_saved') || '[]');
+                    if (!Array.isArray(saved)) throw new Error('Saved spots data is not a list');
+                    const spots = saved
+                        .map((spot, index) => ({ spot, index }))
+                        .filter(({ spot }) => spot && typeof spot.title === 'string');
+                    savedSpotList.replaceChildren();
+                    savedEmpty.textContent = "You haven't saved any spots yet.";
+                    savedEmpty.classList.toggle('hidden', spots.length > 0);
+
+                    spots.forEach(({ spot, index }) => {
+                        const item = document.createElement('li');
+                        item.className = 'saved-spot-item';
+                        const title = document.createElement('h3');
+                        title.textContent = spot.title;
+                        const description = document.createElement('p');
+                        description.textContent = [spot.description, spot.neighborhood && `Near ${spot.neighborhood}.`].filter(Boolean).join(' — ') || spot.coords || '';
+                        const actions = document.createElement('div');
+                        actions.className = 'saved-spot-actions';
+                        const mapLink = document.createElement('a');
+                        mapLink.className = 'btn secondary-btn';
+                        mapLink.href = mapsLink(spot.coords, spot.title);
+                        mapLink.target = '_blank';
+                        mapLink.rel = 'noopener';
+                        mapLink.textContent = 'Open on Map';
+                        const removeButton = document.createElement('button');
+                        removeButton.className = 'btn text-btn';
+                        removeButton.type = 'button';
+                        removeButton.textContent = 'Remove';
+                        removeButton.addEventListener('click', () => {
+                            try {
+                                const latest = JSON.parse(localStorage.getItem('hiddenpaths_saved') || '[]');
+                                if (!Array.isArray(latest)) throw new Error('Saved spots data is not a list');
+                                latest.splice(index, 1);
+                                localStorage.setItem('hiddenpaths_saved', JSON.stringify(latest));
+                                renderSavedSpots();
+                            } catch (e) {
+                                showToast('Unable to remove saved spot');
+                            }
+                        });
+                        actions.append(mapLink, removeButton);
+                        item.append(title, description, actions);
+                        savedSpotList.appendChild(item);
+                    });
+                } catch (e) {
+                    savedSpotList.replaceChildren();
+                    savedEmpty.classList.remove('hidden');
+                    savedEmpty.textContent = 'Unable to load saved spots.';
+                    showToast('Unable to load saved spots');
+                }
+            }
+
             // Build Google Maps link
             function mapsLink(coords, title) {
                 if (!coords) return '#';
@@ -1225,6 +1294,7 @@
             backBtn.addEventListener('click', () => {
                 resultSection.classList.add('hidden');
                 searchSection.classList.remove('hidden');
+                savedSection.classList.add('hidden');
                 quietSpotEditor.classList.add('hidden');
                 spotPicker.classList.add('hidden');
                 resultHeading.textContent = 'Spot Found';
@@ -1263,16 +1333,20 @@
                     navItems.forEach(n => { n.classList.remove('active'); n.setAttribute('aria-pressed', 'false'); });
                     btn.classList.add('active'); btn.setAttribute('aria-pressed', 'true');
                     const tab = btn.getAttribute('data-nav');
-                    // Minimal behavior: for saved, show toast; map opens new tab to Maps center; profile shows toast
+                    resultSection.classList.add('hidden');
+                    searchSection.classList.add('hidden');
+                    savedSection.classList.add('hidden');
                     if (tab === 'saved') {
-                        showToast('Saved list is in-app (localStorage).');
+                        renderSavedSpots();
+                        savedSection.classList.remove('hidden');
                     } else if (tab === 'map') {
                         window.open('https://www.google.com/maps', '_blank', 'noopener');
+                        searchSection.classList.remove('hidden');
                     } else if (tab === 'profile') {
                         showToast('Profile coming soon.');
+                        searchSection.classList.remove('hidden');
                     } else {
                         // explore: return to search
-                        resultSection.classList.add('hidden');
                         searchSection.classList.remove('hidden');
                     }
                 });
